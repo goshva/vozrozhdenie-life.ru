@@ -4,19 +4,23 @@
 
 ## Структура
 
-- `index.html` — вся страница
-- `assets/css/style.css` — стили
+- `index.html` — главная страница
+- `teaser.html` — инвестиционный тизер (самостоятельная страница, не Claude-артефакт)
+- `investors.html` — внутренний список инвесторов/партнёров с CRM-трекером на localStorage (`noindex`)
+- `assets/css/` — стили (`style.css` общий, `investors.css` только для страницы инвесторов)
+- `assets/js/` — `main.js` (мобильное меню, визиты и форма обратной связи через Telegram), `investors.js` (трекер статусов)
 - `assets/img/` — фотографии и логотип
 - `assets/video/` — два видео с площадки
 - `assets/docs/` — ПЗЗ и кадастровая карта (PDF, скачиваемые ссылки)
-- `CNAME` — домен для GitHub Pages (vozrozhdenie-life.ru)
+- `robots.txt`, `sitemap.xml` — для индексации на `https://goshva.github.io/vozrozhdenie-life.ru/`
+
+Кастомный домен не используется — канонический адрес сайта: `https://goshva.github.io/vozrozhdenie-life.ru/` (файл `CNAME` удалён).
 
 ## Публикация на GitHub Pages
 
 1. В репозитории: **Settings → Pages → Build and deployment → Source: Deploy from a branch**.
 2. Branch: `main`, папка `/ (root)`.
-3. Сохранить — через 1–2 минуты сайт будет доступен на `https://<user>.github.io/vozrozhdenie-life.ru/`.
-4. Для кастомного домена `vozrozhdenie-life.ru` (уже задан в `CNAME`): в настройках DNS-регистратора добавить записи, указанные GitHub в том же разделе Settings → Pages (обычно `A`-записи на IP GitHub Pages или `CNAME` на `<user>.github.io`), затем в том же разделе включить **Enforce HTTPS**.
+3. Сохранить — через 1–2 минуты сайт будет доступен на `https://goshva.github.io/vozrozhdenie-life.ru/`.
 
 ## Локальный просмотр
 
