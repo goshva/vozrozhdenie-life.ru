@@ -240,7 +240,12 @@
   .contact .channels{ display:flex; flex-direction:column; gap:4px; font-family:'IBM Plex Mono', monospace; font-size:14.5px; }
   .foot-disclaimer{ font-size:12.5px; color:var(--ink-3); border-top:1px solid var(--border); margin-top:36px; padding-top:18px; max-width:80ch; }
 
-  @media print{ .hero{ -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+  @media print{
+    @page{ margin:10mm; }
+    .hero{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .backlink, .pdfbtn{ display:none; }
+    .stats, .dealband, table{ break-inside:avoid; }
+  }
 </style>
 </head>
 <body>
@@ -256,6 +261,7 @@
     <span class="eyebrow">Продаётся целиком &middot; один инвестор</span>
     <h1>Готовый девелоперский<br>актив <em>у реки Воронеж</em></h1>
     <p class="lede">Земельный массив с оформленным кадастром, действующей концепцией коттеджного посёлка, архитектурным регламентом и продуктовой линейкой домов — под ключ для одного покупателя.</p>
+    <p style="margin:0 0 20px;"><a class="pdfbtn" href="assets/docs/vozrozhdenie-teaser.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:100px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.35);color:#F3EFDF;text-decoration:none;">&#128196; Скачать тизер в PDF</a></p>
     <div class="hero-meta">
       <span>Липецкая область, Добровский округ, с. Преображеновка</span>
       <span>Кад. квартал <b class="mono">48:05:0880401</b></span>

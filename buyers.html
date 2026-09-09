@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Возрождение — рассылка покупателям</title>
+<meta name="description" content="Внутренний трекер рассылки тизера базе потенциальных покупателей проекта «Возрождение».">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1E3A2B">
+<link rel="icon" href="assets/img/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/buyers.css">
+</head>
+<body>
+
+<div class="by-hero">
+  <div class="wrap">
+    <a class="by-back" href="index.html">&larr; На главную</a>
+    <h1>Рассылка покупателям «Возрождения»</h1>
+    <p>База из <span id="byTotal">—</span> потенциальных покупателей (девелоперы, застройщики, инвесторы — Москва, Черноземье, Беларусь). Отметьте письмо галкой при отправке — на следующий рабочий день карточка подсветится напоминанием позвонить. Всё сохраняется только в этом браузере.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="by-stats">
+    <div class="by-stat"><div class="n" id="byTotal2">—</div><div class="l">всего в базе</div></div>
+    <div class="by-stat"><div class="n" id="bySent">0</div><div class="l">писем отправлено</div></div>
+    <div class="by-stat"><div class="n" id="byLeft">—</div><div class="l">ещё не писали</div></div>
+    <div class="by-stat"><div class="n" id="byDue">0</div><div class="l">пора позвонить</div></div>
+  </div>
+
+  <div class="by-controls">
+    <div class="by-controls-inner">
+      <input class="by-search" id="bySearch" type="search" placeholder="Поиск по компании, региону, профилю…">
+      <select class="by-filter" id="byPrioFilter">
+        <option value="">Все приоритеты</option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+      </select>
+      <select class="by-filter" id="byStatusFilter">
+        <option value="">Все статусы</option>
+        <option value="not-sent">Не отправлено</option>
+        <option value="sent">Отправлено</option>
+        <option value="due">Пора позвонить</option>
+      </select>
+      <button class="by-resetbtn" id="byResetBtn" type="button">Сбросить всё</button>
+    </div>
+    <div class="by-count">Показано: <span id="byVisibleCount">—</span></div>
+  </div>
+
+  <div class="by-list" id="byList"></div>
+  <p class="by-empty" id="byEmpty" hidden>Ничего не найдено по этим фильтрам.</p>
+
+  <p class="by-foot">Контакты собраны из открытых источников (официальные сайты компаний, ЕГРЮЛ/rusprofile, 2GIS) на сентябрь 2026 года и не гарантируют актуальность — часть компаний не публикует контакты вовсе, часть полей может устареть. Перед массовой рассылкой рекомендуется выборочно проверить ключевые (A+/A) контакты. Ссылка на эту страницу не индексируется поисковиками (noindex), но не защищена паролем.</p>
+</div>
+
+<script>
+// Значение по умолчанию, если buyers-data.js ещё не загружен ниже
+var BUYERS = window.BUYERS || [];
+</script>
+<script src="assets/js/buyers-data.js"></script>
+<script src="assets/js/buyers.js"></script>
+</body>
+</html>
