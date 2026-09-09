@@ -191,7 +191,7 @@
         if (!st.calledAt && Date.now() >= nextBusinessDay(st.sentAt)) due++;
       }
     });
-    ['byTotal', 'byTotal2'].forEach(function (id) {
+    ['byTotal', 'byTotal2', 'byTotal3'].forEach(function (id) {
       var el = document.getElementById(id);
       if (el) el.textContent = total;
     });
@@ -203,10 +203,41 @@
     if (elLeft) elLeft.textContent = total - sent;
   }
 
+  /* ---------------- Фильтры: значения и состояние панели сохраняются
+     отдельно от отметок "отправлено", чтобы "Сбросить всё" их не задевал. */
+  var FILTER_KEY = 'vozrozhdenie_buyers_filters_v1';
+
+  function loadFilterPrefs() {
+    try {
+      var raw = localStorage.getItem(FILTER_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function saveFilterPrefs(prefs) {
+    try { localStorage.setItem(FILTER_KEY, JSON.stringify(prefs)); } catch (e) {}
+  }
+
+  function currentFilterValues() {
+    return {
+      q: document.getElementById('bySearch').value || '',
+      prio: document.getElementById('byPrioFilter').value || '',
+      status: document.getElementById('byStatusFilter').value || ''
+    };
+  }
+
+  function updateFilterBadge(vals) {
+    var count = (vals.q ? 1 : 0) + (vals.prio ? 1 : 0) + (vals.status ? 1 : 0);
+    var badge = document.getElementById('byFilterBadge');
+    var clearBtn = document.getElementById('byClearFiltersBtn');
+    if (badge) { badge.hidden = count === 0; badge.textContent = count; }
+    if (clearBtn) clearBtn.hidden = count === 0;
+  }
+
   function applyFilters() {
-    var q = (document.getElementById('bySearch').value || '').trim().toLowerCase();
-    var prio = document.getElementById('byPrioFilter').value;
-    var statusFilter = document.getElementById('byStatusFilter').value;
+    var vals = currentFilterValues();
+    var q = vals.q.trim().toLowerCase();
+    var prio = vals.prio;
+    var statusFilter = vals.status;
     var state = loadState();
     var cards = document.querySelectorAll('.by-card');
     var visible = 0;
@@ -229,6 +260,21 @@
     if (empty) empty.hidden = visible !== 0;
     var countEl = document.getElementById('byVisibleCount');
     if (countEl) countEl.textContent = visible;
+    updateFilterBadge(vals);
+
+    var prefs = loadFilterPrefs();
+    prefs.q = vals.q; prefs.prio = vals.prio; prefs.status = vals.status;
+    saveFilterPrefs(prefs);
+  }
+
+  function setPanelOpen(open) {
+    var panel = document.getElementById('byFilterPanel');
+    var toggle = document.getElementById('byToggleBtn');
+    panel.hidden = !open;
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    var prefs = loadFilterPrefs();
+    prefs.open = open;
+    saveFilterPrefs(prefs);
   }
 
   document.addEventListener('DOMContentLoaded', function () {
@@ -240,14 +286,34 @@
     allBuyers.forEach(function (b) { frag.appendChild(renderCard(b, state)); });
     list.appendChild(frag);
     updateStats();
+
+    // Восстановить сохранённые фильтры и состояние панели
+    var prefs = loadFilterPrefs();
+    if (prefs.q) document.getElementById('bySearch').value = prefs.q;
+    if (prefs.prio) document.getElementById('byPrioFilter').value = prefs.prio;
+    if (prefs.status) document.getElementById('byStatusFilter').value = prefs.status;
+    var hasActiveFilters = !!(prefs.q || prefs.prio || prefs.status);
+    setPanelOpen(prefs.open === true || hasActiveFilters);
     applyFilters();
 
     document.getElementById('bySearch').addEventListener('input', applyFilters);
     document.getElementById('byPrioFilter').addEventListener('change', applyFilters);
     document.getElementById('byStatusFilter').addEventListener('change', applyFilters);
 
+    document.getElementById('byToggleBtn').addEventListener('click', function () {
+      var panel = document.getElementById('byFilterPanel');
+      setPanelOpen(panel.hidden);
+    });
+
+    document.getElementById('byClearFiltersBtn').addEventListener('click', function () {
+      document.getElementById('bySearch').value = '';
+      document.getElementById('byPrioFilter').value = '';
+      document.getElementById('byStatusFilter').value = '';
+      applyFilters();
+    });
+
     document.getElementById('byResetBtn').addEventListener('click', function () {
-      if (!confirm('Сбросить все отметки "отправлено"/"прозвонили" по всем ' + allBuyers.length + ' записям?')) return;
+      if (!confirm('Сбросить все отметки "отправлено"/"прозвонили" по всем ' + allBuyers.length + ' записям? (Фильтры это не затронет.)')) return;
       saveState({});
       list.innerHTML = '';
       var frag2 = document.createDocumentFragment();

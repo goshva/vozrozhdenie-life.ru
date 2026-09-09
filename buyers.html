@@ -33,7 +33,18 @@
   </div>
 
   <div class="by-controls">
-    <div class="by-controls-inner">
+    <button class="by-togglebar" id="byToggleBtn" type="button" aria-expanded="false" aria-controls="byFilterPanel">
+      <span class="by-togglebar-left">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+        Фильтры
+        <span class="by-filterbadge" id="byFilterBadge" hidden>0</span>
+      </span>
+      <span class="by-togglebar-right">
+        Показано <span id="byVisibleCount">—</span> из <span id="byTotal3">—</span>
+        <svg class="by-chevron" id="byChevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </button>
+    <div class="by-controls-inner" id="byFilterPanel" hidden>
       <input class="by-search" id="bySearch" type="search" placeholder="Поиск по компании, региону, профилю…">
       <select class="by-filter" id="byPrioFilter">
         <option value="">Все приоритеты</option>
@@ -48,9 +59,9 @@
         <option value="sent">Отправлено</option>
         <option value="due">Пора позвонить</option>
       </select>
-      <button class="by-resetbtn" id="byResetBtn" type="button">Сбросить всё</button>
+      <button class="by-clearfilters" id="byClearFiltersBtn" type="button" hidden>Сбросить фильтры</button>
+      <button class="by-resetbtn" id="byResetBtn" type="button">Сбросить все отметки</button>
     </div>
-    <div class="by-count">Показано: <span id="byVisibleCount">—</span></div>
   </div>
 
   <div class="by-list" id="byList"></div>
