@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Возрождение — инвестиционный тизер</title>
+<meta name="description" content="Готовый девелоперский актив у реки Воронеж: 208 кадастровых участков, 99 га, продаётся целиком одному инвестору.">
+<meta property="og:title" content="Возрождение — инвестиционный тизер">
+<meta property="og:description" content="Готовый девелоперский актив у реки Воронеж: 208 кадастровых участков, 99 га, продаётся целиком одному инвестору.">
+<meta property="og:image" content="https://goshva.github.io/vozrozhdenie-life.ru/assets/img/hero.jpg">
+<meta property="og:url" content="https://goshva.github.io/vozrozhdenie-life.ru/teaser.html">
+<meta property="og:type" content="website">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1E3A2B">
+<link rel="canonical" href="https://goshva.github.io/vozrozhdenie-life.ru/teaser.html">
+<link rel="icon" href="assets/img/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --bg:#F6F2E7;
+    --surface:#FFFFFF;
+    --surface-2:#F0EADA;
+    --ink:#20261C;
+    --ink-2:#525C49;
+    --ink-3:#5F6753;
+    --forest:#1E3A2B;
+    --forest-2:#2C4F3B;
+    --forest-tint:#E7EEE4;
+    --gold:#82550F;
+    --gold-strong:#74490D;
+    --gold-tint:#F1E3C1;
+    --gold-deco:#B8862E;
+    --river:#3F6E76;
+    --river-tint:#E4EFEF;
+    --border:#E1D9C4;
+    --border-2:#D5CBAE;
+    --shadow: 0 1px 2px rgba(30,58,43,.06), 0 8px 24px -12px rgba(30,58,43,.18);
+    /* Fixed (non-theme-switching) dark band - hero & deal band always carry
+       light text, so their background must stay dark in both themes. */
+    --band-a:#1E3A2B;
+    --band-b:#2C4F3B;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#141C16;
+      --surface:#1B261E;
+      --surface-2:#20302A;
+      --ink:#ECE7D6;
+      --ink-2:#B7C0AC;
+      --ink-3:#96A18A;
+      --forest:#DDEBE0;
+      --forest-2:#8FC3A2;
+      --forest-tint:#223129;
+      --gold:#E0B563;
+      --gold-strong:#EFCB84;
+      --gold-tint:#3A2F16;
+      --gold-deco:#D6AA4E;
+      --river:#8FC0C4;
+      --river-tint:#1D2F30;
+      --border:#2D3A30;
+      --border-2:#3A4A3E;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#141C16;
+    --surface:#1B261E;
+    --surface-2:#20302A;
+    --ink:#ECE7D6;
+    --ink-2:#B7C0AC;
+    --ink-3:#96A18A;
+    --forest:#DDEBE0;
+    --forest-2:#8FC3A2;
+    --forest-tint:#223129;
+    --gold:#E0B563;
+    --gold-strong:#EFCB84;
+    --gold-tint:#3A2F16;
+    --gold-deco:#D6AA4E;
+    --river:#8FC0C4;
+    --river-tint:#1D2F30;
+    --border:#2D3A30;
+    --border-2:#3A4A3E;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Public Sans', system-ui, -apple-system, sans-serif;
+    font-size:16px;
+    line-height:1.55;
+  }
+  ::selection{ background:var(--gold-tint); }
+  h1,h2,h3{ font-family:'Fraunces', Georgia, serif; text-wrap:balance; font-weight:600; margin:0; color:inherit; }
+  .mono{ font-family:'IBM Plex Mono', ui-monospace, monospace; font-variant-numeric:tabular-nums; }
+  a{ color:var(--gold); text-decoration-color:var(--border-2); text-underline-offset:3px; }
+  a:hover{ color:var(--gold-strong); }
+  a:focus-visible{ outline:2px solid var(--gold); outline-offset:2px; }
+  .hero a, .dealband a{ color:#F3EFDF; text-decoration-color:rgba(243,239,223,.4); }
+  .hero a:hover, .dealband a:hover{ color:#D8C88F; }
+
+  .wrap{ max-width:920px; margin:0 auto; padding:0 24px 64px; }
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:
+      radial-gradient(1100px 420px at 82% -120px, rgba(165,118,31,.20), transparent 60%),
+      linear-gradient(180deg, var(--band-a) 0%, var(--band-b) 100%);
+    color:#F3EFDF;
+    padding:56px 24px 40px;
+    overflow:hidden;
+  }
+  .hero-photo{
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(180deg, rgba(18,30,22,.88) 0%, rgba(18,30,22,.60) 38%, rgba(18,30,22,.55) 70%, rgba(18,30,22,.92) 100%),
+      url('assets/img/hero.jpg');
+    background-size:cover;
+    background-position:center 38%;
+    opacity:.55;
+  }
+  .hero-inner{ position:relative; z-index:1; max-width:920px; margin:0 auto; }
+  .backlink{ position:relative; z-index:1; display:inline-flex; align-items:center; gap:6px; font-size:13px; color:#C6D2BF; text-decoration:none; margin-bottom:22px; }
+  .backlink:hover{ color:#FBF8EE; }
+  .brandrow{ display:flex; align-items:center; gap:12px; margin-bottom:36px; }
+  .mark{ width:44px; height:44px; flex:none; border-radius:12px; background:#F3EFDF; padding:5px; box-shadow:0 2px 8px rgba(0,0,0,.25); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .mark img{ width:100%; height:100%; object-fit:contain; display:block; }
+  .brandrow .name{ font-family:'Fraunces', serif; font-size:15px; letter-spacing:.08em; text-transform:uppercase; color:#D8C88F; }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Public Sans'; font-size:12.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase;
+    color:#1B2A1F; background:#D8C88F; padding:6px 12px; border-radius:100px; margin-bottom:20px;
+  }
+  .hero h1{ font-size:clamp(34px,5.4vw,54px); line-height:1.04; color:#FBF8EE; margin-bottom:14px; }
+  .hero h1 em{ font-style:italic; color:#D8C88F; }
+  .hero p.lede{ font-size:17.5px; max-width:60ch; color:#D9E1D3; margin-bottom:28px; }
+  .hero-meta{ display:flex; flex-wrap:wrap; gap:10px 28px; font-size:14px; color:#C6D2BF; border-top:1px solid rgba(255,255,255,.16); padding-top:20px; }
+  .hero-meta b{ color:#F3EFDF; font-weight:600; }
+
+  /* ---------- Sections ---------- */
+  section{ padding:44px 0; border-bottom:1px solid var(--border); }
+  section:last-of-type{ border-bottom:none; }
+  .kicker{ font-size:12.5px; font-weight:600; letter-spacing:.09em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
+  .h2{ font-size:26px; margin-bottom:16px; }
+  p{ margin:0 0 14px; color:var(--ink-2); max-width:68ch; }
+  p:last-child{ margin-bottom:0; }
+
+  /* ---------- Stat tiles ---------- */
+  .stats{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); }
+  .stat{ background:var(--surface); padding:26px 22px; }
+  .stat .num{ font-family:'Fraunces', serif; font-size:clamp(26px,3.6vw,36px); font-weight:600; color:var(--forest); line-height:1.05; }
+  :root[data-theme="dark"] .stat .num, @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .stat .num{ color:var(--forest); } }
+  .stat .lbl{ margin-top:6px; font-size:13.5px; color:var(--ink-3); }
+
+  /* ---------- Table ---------- */
+  .tablewrap{ overflow-x:auto; border:1px solid var(--border); border-radius:14px; box-shadow:var(--shadow); }
+  table{ width:100%; border-collapse:collapse; background:var(--surface); font-size:14.5px; min-width:560px; }
+  th,td{ text-align:left; padding:13px 16px; border-bottom:1px solid var(--border); white-space:nowrap; }
+  th{ font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); background:var(--surface-2); }
+  tbody tr:last-child td{ border-bottom:none; }
+  td.num, th.num{ text-align:right; font-family:'IBM Plex Mono', monospace; font-variant-numeric:tabular-nums; }
+  tr.total td{ font-weight:600; color:var(--ink); background:var(--surface-2); border-top:2px solid var(--border-2); }
+
+  /* ---------- Bar chart ---------- */
+  .chartcard{ border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:24px 24px 10px; box-shadow:var(--shadow); }
+  .chart-title{ font-size:13px; color:var(--ink-3); margin-bottom:18px; }
+  .bar-row{ display:grid; grid-template-columns:168px 1fr auto; align-items:center; gap:12px; padding:9px 0; border-radius:8px; }
+  .bar-row:hover{ background:var(--surface-2); }
+  .bar-name{ font-size:13.5px; color:var(--ink-2); }
+  .bar-track{ position:relative; height:14px; background:var(--surface-2); border-radius:4px; }
+  .bar-fill{ position:absolute; inset:0; width:0; background:linear-gradient(90deg, var(--forest-2), var(--gold-deco)); border-radius:4px; transition:width .9s cubic-bezier(.2,.7,.2,1); }
+  .bar-val{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink); font-variant-numeric:tabular-nums; text-align:right; min-width:58px; }
+  .bar-row[title]{ cursor:default; }
+
+  /* ---------- Two-col feature grid ---------- */
+  .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+  @media (max-width:640px){ .grid2{ grid-template-columns:1fr; } .stats{ grid-template-columns:1fr; } }
+  .feature h3{ font-size:15.5px; margin-bottom:6px; color:var(--ink); }
+  .feature p{ font-size:14.5px; }
+  dl.speclist{ display:grid; grid-template-columns:auto 1fr; gap:8px 18px; margin:0; font-size:14.5px; }
+  dl.speclist dt{ color:var(--ink-3); }
+  dl.speclist dd{ margin:0; color:var(--ink); font-weight:500; }
+
+  /* ---------- Chips ---------- */
+  .chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .chip{ font-size:13px; padding:7px 13px; border-radius:100px; background:var(--forest-tint); color:var(--forest); border:1px solid var(--border); }
+  :root[data-theme="dark"] .chip, @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .chip{ color:var(--forest); } }
+  .chip.gold{ background:var(--gold-tint); color:var(--gold-strong); }
+  .chip.river{ background:var(--river-tint); color:var(--river); }
+
+  /* ---------- Scenario cards ---------- */
+  .scenarios{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
+  @media (max-width:760px){ .scenarios{ grid-template-columns:repeat(2,1fr); } }
+  .scard{ border:1px solid var(--border); border-radius:12px; padding:16px 14px; background:var(--surface); }
+  .scard .n{ font-family:'Fraunces', serif; font-size:20px; color:var(--forest); margin-bottom:4px; }
+  :root[data-theme="dark"] .scard .n, @media (prefers-color-scheme:dark){ :root:not([data-theme="light"]) .scard .n{ color:var(--forest); } }
+  .scard .t{ font-size:13px; color:var(--ink-2); }
+
+  /* ---------- Deal / price band ---------- */
+  .dealband{ background:linear-gradient(180deg, var(--band-a) 0%, var(--band-b) 100%); color:#F3EFDF; border-radius:18px; padding:40px 36px; box-shadow:var(--shadow); }
+  .dealband .kicker{ color:#D8C88F; }
+  .dealband h2{ color:#FBF8EE; font-size:24px; margin-bottom:10px; }
+  .dealband p{ color:#D9E1D3; max-width:60ch; }
+  .priceline{ display:flex; align-items:baseline; gap:14px; flex-wrap:wrap; margin:22px 0 24px; }
+  .price{ font-family:'Fraunces', serif; font-weight:600; font-size:clamp(32px,5vw,48px); color:#FBF8EE; }
+  .pricesub{ font-size:14px; color:#B9C6B1; }
+  .dealgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:rgba(255,255,255,.14); border-radius:12px; overflow:hidden; margin-top:8px; }
+  @media (max-width:640px){ .dealgrid{ grid-template-columns:1fr; } }
+  .dealcell{ background:rgba(20,32,24,.35); padding:16px 18px; }
+  .dealcell .n{ font-family:'IBM Plex Mono', monospace; font-size:19px; color:#FBF8EE; }
+  .dealcell .l{ font-size:12.5px; color:#B9C6B1; margin-top:3px; }
+
+  /* ---------- Photos ---------- */
+  figure{ margin:0; }
+  .photo{ border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); background:var(--surface); }
+  .photo img{ width:100%; display:block; }
+  .photo figcaption{ padding:11px 16px; font-size:13px; color:var(--ink-3); border-top:1px solid var(--border); }
+  .photo.banner img{ height:280px; object-fit:cover; }
+  @media (max-width:640px){ .photo.banner img{ height:200px; } }
+  .imgtext{ display:grid; grid-template-columns:1.1fr 1fr; gap:28px; align-items:center; }
+  @media (max-width:700px){ .imgtext{ grid-template-columns:1fr; } }
+  .imgtext .photo img{ height:100%; object-fit:cover; }
+
+  /* ---------- Source links ---------- */
+  .sourcelinks{ display:grid; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); }
+  .sourcelinks a{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; background:var(--surface); padding:14px 18px; text-decoration:none; color:var(--ink); }
+  .sourcelinks a:hover{ background:var(--surface-2); }
+  .sourcelinks .stitle{ font-size:14.5px; font-weight:500; }
+  .sourcelinks .surl{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--gold); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+  /* ---------- Contact / footer ---------- */
+  .contact{ display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; padding-top:36px; }
+  .contact h3{ font-size:17px; margin-bottom:8px; }
+  .contact .who{ font-size:14.5px; color:var(--ink-2); }
+  .contact .channels{ display:flex; flex-direction:column; gap:4px; font-family:'IBM Plex Mono', monospace; font-size:14.5px; }
+  .foot-disclaimer{ font-size:12.5px; color:var(--ink-3); border-top:1px solid var(--border); margin-top:36px; padding-top:18px; max-width:80ch; }
+
+  @media print{ .hero{ -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-photo"></div>
+  <div class="hero-inner">
+    <a class="backlink" href="index.html">&larr; На сайт «Возрождение»</a>
+    <div class="brandrow">
+      <span class="mark"><img src="assets/img/logo.png" alt="Возрождение"></span>
+      <span class="name">Возрождение</span>
+    </div>
+    <span class="eyebrow">Продаётся целиком &middot; один инвестор</span>
+    <h1>Готовый девелоперский<br>актив <em>у реки Воронеж</em></h1>
+    <p class="lede">Земельный массив с оформленным кадастром, действующей концепцией коттеджного посёлка, архитектурным регламентом и продуктовой линейкой домов — под ключ для одного покупателя.</p>
+    <div class="hero-meta">
+      <span>Липецкая область, Добровский округ, с. Преображеновка</span>
+      <span>Кад. квартал <b class="mono">48:05:0880401</b></span>
+      <span>Москва — <b>≈400 км</b></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <section>
+    <div class="kicker">Что предлагается</div>
+    <h2 class="h2">Не участок и не «земля в поле» — готовая платформа</h2>
+    <div class="imgtext">
+      <p style="margin:0">Все участки будущего посёлка принадлежат одному собственнику. Это значит: не нужно собирать землю по частям и договариваться с десятками владельцев. Инвестор получает земельный банк вместе с мастер-планом, архитектурной концепцией, продуктовой линейкой домов, инженерной подготовкой (дороги, мост, электричество, газ) и кадастровыми материалами — готовую основу для запуска продаж без разработки концепции с нуля.</p>
+      <figure class="photo">
+        <img src="assets/img/land-aerial.jpg" alt="Аэросъёмка земельного массива у реки Воронеж">
+        <figcaption>Массив до застройки: излучина реки Воронеж, лес, подъездная дорога</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Масштаб актива</div>
+    <h2 class="h2">По актуальным кадастровым данным</h2>
+    <div class="stats">
+      <div class="stat"><div class="num mono">208</div><div class="lbl">кадастровых участков в составе актива</div></div>
+      <div class="stat"><div class="num mono">99,0 га</div><div class="lbl">суммарная площадь по кадастру</div></div>
+      <div class="stat"><div class="num mono">197</div><div class="lbl">участков под жилую застройку, 40,8 га</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Состав актива</div>
+    <h2 class="h2">Не только жильё — сформированы рекреационные и социальные зоны</h2>
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Назначение</th><th class="num">Участков</th><th class="num">Площадь</th><th class="num">Оценка, ₽</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Участки ИЖС (жилая застройка)</td><td class="num">197</td><td class="num">40,75 га</td><td class="num">203 717 500</td></tr>
+          <tr><td>Заказник (природоохранная зона)</td><td class="num">2</td><td class="num">24,99 га</td><td class="num">24 986 500</td></tr>
+          <tr><td>Пруды</td><td class="num">3</td><td class="num">13,98 га</td><td class="num">27 951 000</td></tr>
+          <tr><td>Усадьбы</td><td class="num">2</td><td class="num">7,76 га</td><td class="num">38 775 500</td></tr>
+          <tr><td>База отдыха</td><td class="num">1</td><td class="num">9,64 га</td><td class="num">48 176 000</td></tr>
+          <tr><td>Инфраструктура и соцобъекты<br><span style="font-size:12px;color:var(--ink-3)">спортплощадка, деловая зона, водонапорная башня</span></td><td class="num">3</td><td class="num">1,92 га</td><td class="num">9 620 500</td></tr>
+          <tr class="total"><td>Итого</td><td class="num">208</td><td class="num">99,02 га</td><td class="num">353 227 000</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:10px;font-size:12.5px;color:var(--ink-3)">Оценка — рыночная (заявленная), рассчитана по каждому из 208 участков по ставке 500 ₽/м² для жилой застройки, усадеб и базы отдыха, 200 ₽/м² для прудов и 100 ₽/м² для заказника. Официальная кадастровая стоимость этих же участков по данным Росреестра — 67 819 911 ₽; рыночная оценка отражает подготовленность массива и концепцию, а не служит её заменой.</p>
+
+    <div style="height:20px"></div>
+
+    <div class="grid2" style="align-items:start;">
+      <div class="chartcard">
+        <div class="chart-title">Распределение площади по назначению, га</div>
+        <div id="chart"></div>
+      </div>
+      <figure class="photo">
+        <img src="assets/img/zoning-map.jpg" alt="Схема зонирования и нарезки участков массива">
+        <figcaption>Фрагмент утверждённой схемы зонирования — жилая застройка, VIP-зона, усадьбы, инфраструктура</figcaption>
+      </figure>
+    </div>
+
+    <p style="margin-top:18px;font-size:13.5px;color:var(--ink-3)">В расширенной проектной концепции территория рассчитана на 131,65 га и до 223–227 домовладений с учётом дальнейшего межевания резервных зон — см. полный инвестиционный меморандум.</p>
+  </section>
+
+  <section>
+    <div class="kicker">Локация</div>
+    <h2 class="h2">Река, лес, действующий мост — не изолированное поле</h2>
+    <figure class="photo banner" style="margin-bottom:24px;">
+      <img src="assets/img/bridge.jpg" alt="Мост через реку Воронеж на подъезде к массиву">
+      <figcaption>Мост через реку Воронеж на подъездной дороге — введён в эксплуатацию 01.11.2020</figcaption>
+    </figure>
+    <div class="grid2">
+      <div class="feature">
+        <dl class="speclist">
+          <dt>Расположение</dt><dd>берег реки Воронеж, окружено лесом</dd>
+          <dt>Подъезд</dt><dd>асфальтированная дорога</dd>
+          <dt>Мост через Воронеж</dt><dd>введён в эксплуатацию 01.11.2020</dd>
+          <dt>До Липецка</dt><dd>64 км</dd>
+          <dt>До Мичуринска</dt><dd>50 км</dd>
+          <dt>До Тамбова</dt><dd>120 км</dd>
+        </dl>
+      </div>
+      <div class="feature">
+        <h3>Готовая социальная среда рядом</h3>
+        <p>В 2,5 км — село Преображеновка с действующей школой, детским садом, бассейном, спортивным комплексом, фельдшерским пунктом, магазинами, набережной и благоустроенным пляжем. Проект развивается не в изоляции, а рядом с работающей инфраструктурой.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Соседство и репутация</div>
+    <h2 class="h2">Преображеновка — шестикратный победитель всероссийского конкурса</h2>
+    <p>Село Преображеновка, в 2,5 км от которого расположен участок, в 2011–2020 гг. шесть раз признавалось победителем всероссийского конкурса на самое благоустроенное сельское поселение России (категория — населённые пункты с числом жителей до 400 человек). Это не изолированная площадка «в поле», а территория с подтверждённой репутацией и работающей социальной инфраструктурой в шаговой доступности.</p>
+    <div class="sourcelinks">
+      <a href="https://admdobroe.ru/category/selskie-poseleniya/preobrazhenovka/" target="_blank" rel="noopener">
+        <span class="stitle">Администрация Добровского округа — раздел «Преображеновка» (материалы о новом районе «Возрождение»)</span>
+        <span class="surl">admdobroe.ru</span>
+      </a>
+      <a href="https://ru.wikipedia.org/wiki/Преображеновка_(Липецкая_область)" target="_blank" rel="noopener">
+        <span class="stitle">Википедия — статья о селе Преображеновка (Липецкая область)</span>
+        <span class="surl">ru.wikipedia.org</span>
+      </a>
+      <a href="index.html" target="_blank" rel="noopener">
+        <span class="stitle">Сайт жилого района «Возрождение»</span>
+        <span class="surl">vozrozhdenie-life.ru</span>
+      </a>
+      <a href="https://www.youtube.com/results?search_query=%D0%B2%D0%BE%D0%B7%D1%80%D0%BE%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5+%D1%81%D0%B5%D0%BB%D0%BE+%D0%BF%D1%80%D0%B5%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D1%81%D0%BA%D0%BE%D0%BA%D0%B5+%D0%BB%D0%B8%D0%BF%D0%B5%D1%86%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%82%D1%8C+" target="_blank" rel="noopener">
+        <span class="stitle">Видеообзоры посёлка и села на YouTube</span>
+        <span class="surl">youtube.com/results</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Коммуникации</div>
+    <h2 class="h2">Инженерная подготовка участков</h2>
+    <div class="chips">
+      <span class="chip">Электричество — 12,5 кВт/участок</span>
+      <span class="chip river">Водоснабжение — индивидуальные скважины 30–100 м</span>
+      <span class="chip">Газ — территория газифицирована</span>
+      <span class="chip river">Канализация — автономные септики</span>
+      <span class="chip">Отопление — газ / электрокотёл / конвекторы</span>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Продуктовая концепция</div>
+    <h2 class="h2">Единый архитектурный код, серийные дома</h2>
+    <div class="imgtext">
+      <div>
+        <p>Деревянные дома в едином современном стиле: фахверк, Barn House, Hi-Tech, модульные и CLT / CLT Thermo (производство — ПромСтройЛес, pslcomp.ru). Каталог концепции — 36–180 м²; в партнёрской модели сформирована серийная линейка для быстрого старта продаж:</p>
+        <div class="scenarios">
+          <div class="scard"><div class="n">70 м²</div><div class="t">дача, пара, малая семья</div></div>
+          <div class="scard"><div class="n">95 м²</div><div class="t">основной семейный продукт</div></div>
+          <div class="scard"><div class="n">120 м²</div><div class="t">комфортный сегмент</div></div>
+          <div class="scard"><div class="n">20–30</div><div class="t">участков — рекомендуемая первая очередь</div></div>
+          <div class="scard"><div class="n">3</div><div class="t">пляжа, спортивная и рекреационная зона</div></div>
+        </div>
+      </div>
+      <figure class="photo">
+        <img src="assets/img/house-real.jpg" alt="Готовый демонстрационный дом на участке">
+        <figcaption>Построенный демонстрационный дом на участке — не рендер, реальный объект</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker">Дополнительный потенциал</div>
+    <h2 class="h2">≈10 га под туристско-рекреационные проекты</h2>
+    <div class="chips">
+      <span class="chip gold">Глэмпинг</span>
+      <span class="chip gold">Агрокультурный комплекс</span>
+      <span class="chip gold">Туристско-спортивный кластер</span>
+      <span class="chip gold">Пансионат / геронтологический центр</span>
+      <span class="chip gold">Арендные дома</span>
+      <span class="chip gold">Таунхаусы / доходные дома</span>
+    </div>
+  </section>
+
+  <section style="border-bottom:none;">
+    <div class="dealband">
+      <div class="kicker">Формат сделки</div>
+      <h2>Продажа актива целиком — одному инвестору</h2>
+      <p>100% земельного массива вместе с проектной документацией, архитектурной концепцией, продуктовой линейкой домов, инженерной концепцией и кадастровыми материалами. Возможна структурированная или поэтапная сделка — обсуждается индивидуально.</p>
+      <div class="priceline">
+        <span class="price mono">353 227 000 ₽</span>
+        <span class="pricesub">рыночная (заявленная) цена — расчёт по 208 участкам, учтённым в кадастровом квартале 48:05:0880401</span>
+      </div>
+      <div class="dealgrid">
+        <div class="dealcell"><div class="n">208 уч. / 99,0 га</div><div class="l">состав актива</div></div>
+        <div class="dealcell"><div class="n">≈3,57 млн ₽/га</div><div class="l">средняя цена по массиву</div></div>
+        <div class="dealcell"><div class="n">67,8 млн ₽</div><div class="l">для справки: кадастровая стоимость по Росреестру</div></div>
+      </div>
+    </div>
+
+    <div class="contact">
+      <div>
+        <h3>Контакт для меморандума и просмотра</h3>
+        <div class="who">ООО «Экспострой» · Максим Игоревич</div>
+      </div>
+      <div class="channels">
+        <span>+7 910 351-13-33</span>
+        <span>expostroy48@mail.ru</span>
+      </div>
+    </div>
+
+    <p class="foot-disclaimer">Материалы носят предварительный характер и не являются офертой. Перед принятием инвестиционного решения необходима актуализация ЕГРН, градостроительного регламента, ВРИ, ЗОУИТ, дорожного доступа и технических условий инженерных сетей.</p>
+  </section>
+
+</div>
+
+<script>
+  (function(){
+    var data = [
+      { label:'Участки ИЖС', ha:40.75, price:203717500 },
+      { label:'Заказник', ha:24.99, price:24986500 },
+      { label:'Пруды', ha:13.98, price:27951000 },
+      { label:'База отдыха', ha:9.64, price:48176000 },
+      { label:'Усадьбы', ha:7.76, price:38775500 },
+      { label:'Инфраструктура', ha:1.92, price:9620500 }
+    ];
+    var max = Math.max.apply(null, data.map(function(d){ return d.ha; }));
+    var el = document.getElementById('chart');
+    data.forEach(function(d){
+      var row = document.createElement('div');
+      row.className = 'bar-row';
+      row.title = d.label + ': ' + d.ha.toFixed(2).replace('.', ',') + ' га · ' + d.price.toLocaleString('ru-RU') + ' ₽';
+      row.innerHTML =
+        '<span class="bar-name">' + d.label + '</span>' +
+        '<span class="bar-track"><span class="bar-fill" data-w="' + (d.ha / max * 100) + '"></span></span>' +
+        '<span class="bar-val">' + d.ha.toFixed(2).replace('.', ',') + ' га</span>';
+      el.appendChild(row);
+    });
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){
+        document.querySelectorAll('.bar-fill').forEach(function(b){
+          b.style.width = b.getAttribute('data-w') + '%';
+        });
+      });
+    });
+  })();
+</script>
+</body>
+</html>
