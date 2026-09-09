@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://goshva.github.io/vozrozhdenie-life.ru/sitemap.xml

@@ -7,13 +7,37 @@
 <meta name="description" content="Возрождение — новый посёлок из деревянных домов на берегу реки Воронеж, Липецкая область. Участки 12–25 соток, дома CLT под ключ, река, лес, 3 пляжа.">
 <meta property="og:title" content="Возрождение — жилой район на берегу Воронежа">
 <meta property="og:description" content="Новый посёлок из деревянных домов на берегу реки Воронеж. Участки 12–25 соток, дома под ключ, река, лес, своя пляжная зона.">
-<meta property="og:image" content="assets/img/hero.jpg">
+<meta property="og:image" content="https://goshva.github.io/vozrozhdenie-life.ru/assets/img/hero.jpg">
+<meta property="og:url" content="https://goshva.github.io/vozrozhdenie-life.ru/">
+<meta property="og:locale" content="ru_RU">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#1E3A2B">
+<link rel="canonical" href="https://goshva.github.io/vozrozhdenie-life.ru/">
 <link rel="icon" href="assets/img/logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateListing",
+  "name": "Возрождение — жилой район на берегу Воронежа",
+  "description": "Новый посёлок из деревянных домов на берегу реки Воронеж, Липецкая область. Участки 12–25 соток, дома CLT под ключ.",
+  "url": "https://goshva.github.io/vozrozhdenie-life.ru/",
+  "image": "https://goshva.github.io/vozrozhdenie-life.ru/assets/img/hero.jpg",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "ул. Речная, 1, пос. Возрождение",
+    "addressLocality": "с. Преображеновка, Добровский округ",
+    "addressRegion": "Липецкая область",
+    "addressCountry": "RU"
+  },
+  "telephone": "+7-910-351-13-33"
+}
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -32,7 +56,21 @@
       <a href="#village">Село</a>
       <a href="#contacts">Контакты</a>
     </div>
-    <a class="navcta" href="https://wa.me/79103511333" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    <div style="display:flex;align-items:center;gap:10px;">
+      <a class="navcta" href="https://wa.me/79103511333" target="_blank" rel="noopener">Написать в WhatsApp</a>
+      <button class="navtoggle" id="navToggle" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="navMobile">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="navmobile" id="navMobile">
+    <a href="#concept">Концепция</a>
+    <a href="#houses">Дома</a>
+    <a href="#nature">Природа</a>
+    <a href="#location">Локация</a>
+    <a href="#village">Село</a>
+    <a href="#contacts">Контакты</a>
+    <a href="https://wa.me/79103511333" target="_blank" rel="noopener" style="color:var(--gold);font-weight:600;">Написать в WhatsApp</a>
   </div>
 </nav>
 
@@ -76,7 +114,7 @@
         </div>
       </div>
       <figure class="card-photo">
-        <img src="assets/img/land-aerial.jpg" alt="Излучина реки Воронеж рядом с посёлком">
+        <img src="assets/img/land-aerial.jpg" alt="Излучина реки Воронеж рядом с посёлком" loading="lazy" decoding="async">
         <figcaption>Излучина реки Воронеж на границе посёлка</figcaption>
       </figure>
     </div>
@@ -91,15 +129,15 @@
 
     <div class="gallery">
       <figure class="card-photo">
-        <img src="assets/img/house-real.jpg" alt="Построенный демонстрационный дом на участке">
+        <img src="assets/img/house-real.jpg" alt="Построенный демонстрационный дом на участке" loading="lazy" decoding="async">
         <figcaption>Уже построенный дом на участке — не рендер</figcaption>
       </figure>
       <figure class="card-photo">
-        <img src="assets/img/house-blue.jpg" alt="Дом в стиле Barn House с террасой и бассейном">
+        <img src="assets/img/house-blue.jpg" alt="Дом в стиле Barn House с террасой и бассейном" loading="lazy" decoding="async">
         <figcaption>Barn House с террасой</figcaption>
       </figure>
       <figure class="card-photo">
-        <img src="assets/img/house-white.jpg" alt="Дом в скандинавском стиле с большой террасой">
+        <img src="assets/img/house-white.jpg" alt="Дом в скандинавском стиле с большой террасой" loading="lazy" decoding="async">
         <figcaption>Скандинавский стиль, большая терраса</figcaption>
       </figure>
     </div>
@@ -125,7 +163,7 @@
     <p class="lead">54 000 га леса вокруг — сосна, ель, дуб. Более 30 озёр и прудов, исток реки Воронеж рядом с посёлком. Самый экологически чистый район Липецкой области, вдали от трасс и промышленности.</p>
 
     <div class="banner">
-      <img src="assets/img/oak-tree.jpg" alt="Тысячелетний дуб рядом с посёлком — символ Возрождения">
+      <img src="assets/img/oak-tree.jpg" alt="Тысячелетний дуб рядом с посёлком — символ Возрождения" loading="lazy" decoding="async">
     </div>
     <p style="margin-top:-8px;font-size:13.5px;color:var(--ink-3)">Рядом растёт более 1000 дубов возрастом 50–100 лет — дуб стал символом «Возрождения»</p>
 
@@ -139,7 +177,7 @@
         </div>
       </div>
       <figure class="card-photo">
-        <img src="assets/img/forest-trail.jpg" alt="Лесная тропа рядом с посёлком осенью">
+        <img src="assets/img/forest-trail.jpg" alt="Лесная тропа рядом с посёлком осенью" loading="lazy" decoding="async">
         <figcaption>Одна из троп в окрестном лесу</figcaption>
       </figure>
     </div>
@@ -165,7 +203,7 @@
     <h2 class="h2">Рядом с городом, но не в городе</h2>
 
     <div class="banner">
-      <img src="assets/img/bridge.jpg" alt="Мост через реку Воронеж на подъезде к посёлку">
+      <img src="assets/img/bridge.jpg" alt="Мост через реку Воронеж на подъезде к посёлку" loading="lazy" decoding="async">
     </div>
 
     <div class="split">
@@ -223,7 +261,7 @@
         </div>
       </div>
       <figure class="card-photo">
-        <img src="assets/img/sport-complex.jpg" alt="Спортивный комплекс в селе Преображеновка">
+        <img src="assets/img/sport-complex.jpg" alt="Спортивный комплекс в селе Преображеновка" loading="lazy" decoding="async">
         <figcaption>Спортивный комплекс в 2,5 км от посёлка</figcaption>
       </figure>
     </div>
@@ -256,7 +294,7 @@
     <h2 class="h2">Схема зонирования</h2>
     <div class="split">
       <figure class="card-photo">
-        <img src="assets/img/zoning-map.jpg" alt="Схема зонирования и нарезки участков посёлка Возрождение">
+        <img src="assets/img/zoning-map.jpg" alt="Схема зонирования и нарезки участков посёлка Возрождение" loading="lazy" decoding="async">
         <figcaption>Фрагмент утверждённой схемы зонирования</figcaption>
       </figure>
       <div>
@@ -293,9 +331,26 @@
     <div class="ctaband">
       <div class="kicker">Свяжитесь с нами</div>
       <h2>Выберите свой участок у реки</h2>
-      <p>Расскажем о доступных участках, покажем проекты домов и организуем просмотр на месте.</p>
-      <div class="herobtns" style="justify-content:center">
-        <a class="btn btn-primary" href="tel:+79103511333">Позвонить: +7 910 351-13-33</a>
+      <p>Оставьте номер телефона или мессенджер — перезвоним и расскажем о доступных участках.</p>
+
+      <form id="callbackForm" class="callback-form" novalidate>
+        <div class="cf-row">
+          <label class="cf-field">
+            <span>Имя</span>
+            <input type="text" name="name" autocomplete="name" placeholder="Как к вам обращаться">
+          </label>
+          <label class="cf-field">
+            <span>Телефон или мессенджер *</span>
+            <input type="text" name="contact" autocomplete="tel" placeholder="+7 ... или @telegram" required>
+          </label>
+        </div>
+        <button class="btn btn-primary" type="submit" id="cfSubmit">Заказать звонок</button>
+        <p class="cf-status" id="cfStatus" role="status" aria-live="polite"></p>
+        <p class="cf-fineprint">Отправляя форму, вы соглашаетесь на обработку контактных данных для обратной связи.</p>
+      </form>
+
+      <div class="herobtns" style="justify-content:center;margin-top:28px">
+        <a class="btn btn-ghost" href="tel:+79103511333">Позвонить: +7 910 351-13-33</a>
         <a class="btn btn-ghost" href="https://wa.me/79103511333" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
@@ -325,10 +380,17 @@
           <li><a href="https://www.pslcomp.ru/" target="_blank" rel="noopener">Производитель домов — ПромСтройЛес</a></li>
         </ul>
       </div>
+      <div>
+        <h3>Инвесторам и партнёрам</h3>
+        <ul>
+          <li><a href="https://claude.ai/code/artifact/9584de1f-47f9-4eee-a698-bf2883abe494" target="_blank" rel="noopener">Инвестиционный тизер проекта</a></li>
+        </ul>
+      </div>
     </div>
     <p class="footbottom">Материалы сайта носят информационный характер и не являются публичной офертой. © Возрождение, 2026.</p>
   </div>
 </footer>
 
+<script src="assets/js/main.js"></script>
 </body>
 </html>
