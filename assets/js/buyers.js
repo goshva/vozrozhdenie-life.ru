@@ -7,6 +7,25 @@
   var KEY = 'vozrozhdenie_buyers_mailer_v1';
   var SITE = 'https://goshva.github.io/vozrozhdenie-life.ru';
 
+  /* Тот же способ отправки в Telegram, что используется для визитов и формы
+     обратной связи на главной странице (assets/js/main.js) — GET-запрос с
+     токеном бота прямо из браузера (без бэкенда на GitHub Pages). */
+  var TELEGRAM_BOT_TOKEN = '8431645174:AAGTV2Xg4mpOKiqaKHR73pVBBKUDHm0D_yo';
+  var TELEGRAM_CHAT_ID = '190404167'; // Erop (@goshva13)
+
+  function sendToTelegram(text) {
+    var url = 'https://api.telegram.org/bot' + TELEGRAM_BOT_TOKEN + '/sendMessage'
+      + '?chat_id=' + encodeURIComponent(TELEGRAM_CHAT_ID)
+      + '&text=' + encodeURIComponent(text);
+    return fetch(url, { method: 'GET', mode: 'no-cors' })
+      .then(function () { return true; })
+      .catch(function (err) { console.warn('[Возрождение] Telegram send failed', err); return false; });
+  }
+
+  var APP_LABELS = {
+    telegram: 'Telegram', whatsapp: 'WhatsApp', viber: 'Viber', sms: 'SMS', email: 'Email', other: 'Другое'
+  };
+
   function loadState() {
     try {
       var raw = localStorage.getItem(KEY);
@@ -108,10 +127,11 @@
       ? '<div class="by-meta">' + b.contactName + (b.contactPosition ? ' — ' + b.contactPosition : '') + '</div>'
       : '';
 
+    var baseAt = Math.max(st.sentAt || 0, st.corrAt || 0);
     var dueBadge = '';
     var isDue = false;
-    if (st.sentAt && !st.calledAt) {
-      var due = nextBusinessDay(st.sentAt);
+    if (baseAt && !st.calledAt) {
+      var due = nextBusinessDay(baseAt);
       if (Date.now() >= due) {
         isDue = true;
         dueBadge = '<span class="by-duebadge">&#128222; Пора позвонить</span>';
@@ -120,9 +140,40 @@
     if (st.sentAt) card.classList.add('is-sent');
     if (isDue) card.classList.add('is-due');
 
-    var sentInfo = st.sentAt
-      ? '<span class="by-sentinfo">отправлено ' + fmtDateTime(st.sentAt) + (st.calledAt ? ' &middot; прозвонили ' + fmtDate(st.calledAt) : '') + '</span>'
-      : '';
+    var infoBits = [];
+    if (st.sentAt) infoBits.push('письмо ' + fmtDateTime(st.sentAt));
+    if (st.corrAt) infoBits.push('переписка (' + (APP_LABELS[st.corrApp] || 'приложение не выбрано') + ') ' + fmtDateTime(st.corrAt));
+    if (st.calledAt) infoBits.push('прозвонили ' + fmtDate(st.calledAt));
+    var sentInfo = infoBits.length ? '<span class="by-sentinfo">' + infoBits.join(' &middot; ') + '</span>' : '';
+
+    var showCalled = !!(st.sentAt || st.corrAt);
+    var showAppSelect = !!(st.corrAt || false);
+
+    var meetingRow;
+    if (st.meeting) {
+      meetingRow = '<div class="by-meeting-row">' +
+        '<span class="by-meeting-badge">&#128197; Встреча: ' + st.meeting.date + ' ' + st.meeting.time + ' &middot; ' + st.meeting.place +
+        ' <button type="button" class="by-meeting-edit js-meeting-edit">изменить</button></span>' +
+        '<div class="by-meeting-form" id="mf-' + b.rank + '" hidden>' +
+          '<input type="date" class="jm-date" value="' + st.meeting.date + '">' +
+          '<input type="time" class="jm-time" value="' + st.meeting.time + '">' +
+          '<input type="text" class="jm-place" placeholder="Место встречи" value="' + st.meeting.place + '">' +
+          '<button type="button" class="jm-save">Сохранить</button>' +
+          '<button type="button" class="jm-cancel">Отмена</button>' +
+        '</div>' +
+      '</div>';
+    } else {
+      meetingRow = '<div class="by-meeting-row">' +
+        '<button type="button" class="by-meeting-btn js-meeting-open">&#128197; Назначить встречу</button>' +
+        '<div class="by-meeting-form" id="mf-' + b.rank + '" hidden>' +
+          '<input type="date" class="jm-date">' +
+          '<input type="time" class="jm-time">' +
+          '<input type="text" class="jm-place" placeholder="Место встречи">' +
+          '<button type="button" class="jm-save">Сохранить</button>' +
+          '<button type="button" class="jm-cancel">Отмена</button>' +
+        '</div>' +
+      '</div>';
+    }
 
     card.innerHTML =
       '<div class="by-top">' +
@@ -137,10 +188,20 @@
       '<div class="by-bottom">' +
         '<div class="by-checks">' +
           '<label class="by-check"><input type="checkbox" class="js-sent" ' + (st.sentAt ? 'checked' : '') + '> Письмо отправлено</label>' +
-          (st.sentAt ? '<label class="by-check"><input type="checkbox" class="js-called" ' + (st.calledAt ? 'checked' : '') + '> Прозвонили</label>' : '') +
+          '<label class="by-check"><input type="checkbox" class="js-corr" ' + (st.corrAt ? 'checked' : '') + '> Переписка с менеджером</label>' +
+          (showAppSelect ? (
+            '<select class="by-app-select js-app">' +
+              '<option value="">Приложение…</option>' +
+              Object.keys(APP_LABELS).map(function (k) {
+                return '<option value="' + k + '"' + (st.corrApp === k ? ' selected' : '') + '>' + APP_LABELS[k] + '</option>';
+              }).join('') +
+            '</select>'
+          ) : '') +
+          (showCalled ? '<label class="by-check"><input type="checkbox" class="js-called" ' + (st.calledAt ? 'checked' : '') + '> Прозвонили</label>' : '') +
         '</div>' +
         (dueBadge || sentInfo) +
-      '</div>';
+      '</div>' +
+      meetingRow;
 
     var sentCb = card.querySelector('.js-sent');
     sentCb.addEventListener('change', function () {
@@ -164,6 +225,63 @@
         if (calledCb.checked) state[b.rank].calledAt = Date.now();
         else delete state[b.rank].calledAt;
         saveState(state);
+        rerenderCard(b, state);
+      });
+    }
+
+    var corrCb = card.querySelector('.js-corr');
+    corrCb.addEventListener('change', function () {
+      state = loadState();
+      state[b.rank] = state[b.rank] || {};
+      if (corrCb.checked) {
+        state[b.rank].corrAt = Date.now();
+      } else {
+        delete state[b.rank].corrAt;
+        delete state[b.rank].corrApp;
+      }
+      saveState(state);
+      rerenderCard(b, state);
+    });
+
+    var appSelect = card.querySelector('.js-app');
+    if (appSelect) {
+      appSelect.addEventListener('change', function () {
+        state = loadState();
+        state[b.rank] = state[b.rank] || {};
+        state[b.rank].corrApp = appSelect.value || undefined;
+        saveState(state);
+      });
+    }
+
+    var meetingForm = card.querySelector('.by-meeting-form');
+    var openBtn = card.querySelector('.js-meeting-open');
+    var editBtn = card.querySelector('.js-meeting-edit');
+    if (openBtn) openBtn.addEventListener('click', function () { meetingForm.hidden = false; });
+    if (editBtn) editBtn.addEventListener('click', function () { meetingForm.hidden = false; });
+    var cancelBtn = card.querySelector('.jm-cancel');
+    if (cancelBtn) cancelBtn.addEventListener('click', function () { meetingForm.hidden = true; });
+    var saveBtn = card.querySelector('.jm-save');
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function () {
+        var date = card.querySelector('.jm-date').value;
+        var time = card.querySelector('.jm-time').value;
+        var place = card.querySelector('.jm-place').value.trim();
+        if (!date || !time || !place) {
+          alert('Укажите дату, время и место встречи.');
+          return;
+        }
+        state = loadState();
+        state[b.rank] = state[b.rank] || {};
+        state[b.rank].meeting = { date: date, time: time, place: place, setAt: Date.now() };
+        saveState(state);
+
+        var text = 'Назначена встреча — ' + b.company + ' (#' + b.rank + ')\n'
+          + 'Дата: ' + date + '\n'
+          + 'Время: ' + time + '\n'
+          + 'Место: ' + place
+          + (b.contactName ? '\nКонтакт: ' + b.contactName : '');
+        sendToTelegram(text);
+
         rerenderCard(b, state);
       });
     }

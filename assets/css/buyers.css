@@ -106,5 +106,47 @@
   border-radius:100px; background:var(--gold-tint); color:var(--gold-strong);
 }
 
+.by-app-select{
+  font-family:'Public Sans'; font-size:12.5px; padding:5px 8px; border-radius:8px;
+  border:1px solid var(--border-2); background:var(--surface); color:var(--ink); cursor:pointer;
+}
+
+.by-meeting-row{ margin-top:10px; }
+.by-meeting-btn{
+  font-family:'Public Sans'; font-size:12.5px; font-weight:600; color:var(--river); background:var(--river-tint);
+  border:1px solid transparent; border-radius:8px; padding:7px 12px; cursor:pointer; white-space:nowrap;
+}
+.by-meeting-badge{
+  display:inline-flex; flex-wrap:wrap; align-items:center; gap:7px; font-size:12.5px; font-weight:600;
+  padding:6px 12px; border-radius:10px; background:var(--river-tint); color:var(--river);
+}
+.by-meeting-edit{
+  font-family:'Public Sans'; font-size:11.5px; font-weight:600; color:var(--ink-3); background:none;
+  border:none; text-decoration:underline; cursor:pointer; padding:0;
+}
+.by-meeting-form{
+  display:flex; flex-wrap:wrap; gap:8px; margin-top:8px; padding:12px; border-radius:10px;
+  background:var(--surface-2); border:1px solid var(--border);
+}
+.by-meeting-form[hidden]{ display:none; }
+.by-meeting-form input[type="date"],
+.by-meeting-form input[type="time"],
+.by-meeting-form input[type="text"]{
+  font-family:'Public Sans'; font-size:13px; padding:8px 10px; border-radius:8px;
+  border:1px solid var(--border-2); background:var(--surface); color:var(--ink); flex:1 1 120px; min-width:0;
+}
+.by-meeting-form .jm-save{
+  font-family:'Public Sans'; font-size:12.5px; font-weight:600; color:#1B2A1F; background:var(--gold-deco);
+  border:none; border-radius:8px; padding:8px 14px; cursor:pointer;
+}
+.by-meeting-form .jm-cancel{
+  font-family:'Public Sans'; font-size:12.5px; color:var(--ink-3); background:none;
+  border:1px solid var(--border); border-radius:8px; padding:8px 14px; cursor:pointer;
+}
+@media (max-width:480px){
+  .by-meeting-form{ flex-direction:column; }
+  .by-meeting-form input, .by-meeting-form .jm-save, .by-meeting-form .jm-cancel{ width:100%; }
+}
+
 .by-empty{ text-align:center; padding:40px 20px; color:var(--ink-3); font-size:14px; }
 .by-foot{ font-size:12px; color:var(--ink-3); padding:8px 0 48px; max-width:80ch; }
