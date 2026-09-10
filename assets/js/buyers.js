@@ -23,7 +23,7 @@
   }
 
   var APP_LABELS = {
-    telegram: 'Telegram', whatsapp: 'WhatsApp', viber: 'Viber', sms: 'SMS', email: 'Email', other: 'Другое'
+    telegram: 'Telegram', whatsapp: 'WhatsApp', max: 'MAX', viber: 'Viber', sms: 'SMS', email: 'Email', other: 'Другое'
   };
 
   function loadState() {
@@ -235,6 +235,10 @@
       if (isMobileLike) {
         contactsHtml += '<a class="by-chip tg" href="https://t.me/+' + digits + '" target="_blank" rel="noopener">Telegram</a>';
         contactsHtml += '<a class="by-chip wa" href="https://wa.me/' + digits + '" target="_blank" rel="noopener">WhatsApp</a>';
+        // У MAX нет прямых ссылок на контакт по номеру (в отличие от t.me/wa.me) —
+        // копируем номер и открываем max.ru, чтобы найти контакт вручную.
+        contactsHtml += '<button type="button" class="by-chip max js-max-chip" data-phone="' + b.phone
+          + '" title="В MAX нет прямой ссылки на контакт по номеру — кнопка скопирует номер и откроет max.ru">MAX</button>';
       }
     } else {
       contactsHtml += '<span class="by-chip missing">телефон не найден</span>';
@@ -326,6 +330,24 @@
         (dueBadge || sentInfo) +
       '</div>' +
       meetingRow;
+
+    var maxChip = card.querySelector('.js-max-chip');
+    if (maxChip) {
+      maxChip.addEventListener('click', function () {
+        var phone = maxChip.dataset.phone;
+        var originalLabel = maxChip.textContent;
+        function openMax() {
+          window.open('https://max.ru/', '_blank', 'noopener');
+          maxChip.textContent = 'Скопировано!';
+          setTimeout(function () { maxChip.textContent = originalLabel; }, 1800);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(phone).then(openMax).catch(openMax);
+        } else {
+          openMax();
+        }
+      });
+    }
 
     var sentCb = card.querySelector('.js-sent');
     sentCb.addEventListener('change', function () {

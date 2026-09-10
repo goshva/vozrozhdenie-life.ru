@@ -81,18 +81,22 @@
   background:var(--surface-2); color:var(--ink); text-decoration:none; border:1px solid var(--border);
 }
 .by-chip:hover{ border-color:var(--gold); color:var(--ink); }
+button.by-chip{ font-family:'Public Sans'; cursor:pointer; }
 .by-chip.mail{ background:var(--gold-tint); color:var(--gold-strong); border-color:transparent; }
 .by-chip.tg{ background:#E3F0FA; color:#1C6FA8; border-color:transparent; }
 .by-chip.wa{ background:#DFF3E3; color:#237A3D; border-color:transparent; }
+.by-chip.max{ background:#EDE3FA; color:#6B3FA0; border-color:transparent; }
 .by-chip.missing{ background:none; border-style:dashed; color:var(--ink-3); font-style:italic; }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]) .by-chip.tg{ background:#152A38; color:#7FC0EA; }
   :root:not([data-theme="light"]) .by-chip.wa{ background:#12301A; color:#8FDB9E; }
+  :root:not([data-theme="light"]) .by-chip.max{ background:#241C38; color:#B69EE0; }
   :root:not([data-theme="light"]) .by-badge.p-A_{ background:#332019; color:#E0917B; }
   :root:not([data-theme="light"]) .by-badge.p-A{ background:#332812; color:#E0B563; }
 }
 :root[data-theme="dark"] .by-chip.tg{ background:#152A38; color:#7FC0EA; }
 :root[data-theme="dark"] .by-chip.wa{ background:#12301A; color:#8FDB9E; }
+:root[data-theme="dark"] .by-chip.max{ background:#241C38; color:#B69EE0; }
 :root[data-theme="dark"] .by-badge.p-A_{ background:#332019; color:#E0917B; }
 :root[data-theme="dark"] .by-badge.p-A{ background:#332812; color:#E0B563; }
 
