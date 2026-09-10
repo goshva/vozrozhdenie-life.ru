@@ -86,6 +86,8 @@ button.by-chip{ font-family:'Public Sans'; cursor:pointer; }
 .by-chip.tg{ background:#E3F0FA; color:#1C6FA8; border-color:transparent; }
 .by-chip.wa{ background:#DFF3E3; color:#237A3D; border-color:transparent; }
 .by-chip.max{ background:#EDE3FA; color:#6B3FA0; border-color:transparent; }
+.by-chip.is-clicked{ opacity:.65; }
+.by-chip.is-clicked:hover{ opacity:1; }
 .by-chip.missing{ background:none; border-style:dashed; color:var(--ink-3); font-style:italic; }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]) .by-chip.tg{ background:#152A38; color:#7FC0EA; }

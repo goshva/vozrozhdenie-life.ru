@@ -183,14 +183,13 @@
     return new Date(ms).toLocaleDateString('ru-RU', { day: '2-digit', month: '2-digit', year: 'numeric' });
   }
 
-  function buildMailto(b) {
+  function buildMessageBody(b) {
     var greetName = b.contactName ? b.contactName.split(' ')[1] || b.contactName : '';
     var greeting = greetName ? ('Добрый день, ' + greetName + '!') : 'Добрый день!';
-    var subject = 'Возрождение — коттеджный посёлок у реки Воронеж, Липецкая область';
-    var body = [
+    return [
       greeting,
       '',
-      'Меня зовут Максим, ООО «Экспострой» — застройщик проекта «Возрождение» в Липецкой области.',
+      'Меня зовут Максим Игоревич, ООО «Экспострой» — собственник проекта «Возрождение» в Липецкой области.',
       '',
       'Хочу предложить ' + (b.company ? '«' + b.company + '»' : 'вашей компании') + ' ознакомиться с готовым девелоперским активом: 208 кадастровых участков (99 га) на берегу реки Воронеж, с оформленной концепцией коттеджного посёлка. Продаётся целиком одному инвестору.',
       '',
@@ -203,7 +202,36 @@
       'Максим Игоревич',
       '+7 910 351-13-33'
     ].join('\n');
-    return 'mailto:' + encodeURIComponent(b.email) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  }
+
+  function buildMailto(b) {
+    var subject = 'Возрождение — коттеджный посёлок у реки Воронеж, Липецкая область';
+    return 'mailto:' + encodeURIComponent(b.email) + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(buildMessageBody(b));
+  }
+
+  function copyToClipboard(text, cb) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { if (cb) cb(); }, function () { if (cb) cb(); });
+    } else if (cb) {
+      cb();
+    }
+  }
+
+  /* Запоминаем, какие кнопки контактов (письмо/телефон/мессенджеры) уже
+     нажимали по этой карточке, и подсвечиваем их галочкой при следующих
+     открытиях страницы — чтобы не писать/звонить дважды по забывчивости. */
+  function markChannelClick(rank, channel, chipEl) {
+    var s = loadState();
+    s[rank] = s[rank] || {};
+    s[rank].clicks = s[rank].clicks || {};
+    if (!s[rank].clicks[channel]) {
+      s[rank].clicks[channel] = Date.now();
+      saveState(s);
+    }
+    if (chipEl && !chipEl.classList.contains('is-clicked')) {
+      chipEl.classList.add('is-clicked');
+      chipEl.innerHTML = '&#10003; ' + chipEl.innerHTML;
+    }
   }
 
   function priorityClass(p) {
@@ -222,23 +250,33 @@
     card.dataset.priority = b.priority;
     card.dataset.hasEmail = b.email ? '1' : '0';
 
+    var clicks = st.clicks || {};
+    function clickedClass(channel) { return clicks[channel] ? ' is-clicked' : ''; }
+    function clickedMark(channel) { return clicks[channel] ? '&#10003; ' : ''; }
+
     var contactsHtml = '';
     if (b.email) {
-      contactsHtml += '<a class="by-chip mail" href="' + buildMailto(b) + '">&#9993; Написать письмо</a>';
+      contactsHtml += '<a class="by-chip mail js-channel-chip' + clickedClass('mail') + '" data-channel="mail" href="' + buildMailto(b) + '">'
+        + clickedMark('mail') + '&#9993; Написать письмо</a>';
     } else {
       contactsHtml += '<span class="by-chip missing">email не найден</span>';
     }
     var digits = digitsOnly(b.phone);
     var isMobileLike = digits.length === 11 && digits.slice(1, 4) !== '800'; // 8-800 toll-free lines aren't personal messenger contacts
     if (b.phone) {
-      contactsHtml += '<a class="by-chip" href="tel:+' + digits + '">&#9742; ' + b.phone + '</a>';
+      contactsHtml += '<a class="by-chip js-channel-chip' + clickedClass('tel') + '" data-channel="tel" href="tel:+' + digits + '">'
+        + clickedMark('tel') + '&#9742; ' + b.phone + '</a>';
       if (isMobileLike) {
-        contactsHtml += '<a class="by-chip tg" href="https://t.me/+' + digits + '" target="_blank" rel="noopener">Telegram</a>';
-        contactsHtml += '<a class="by-chip wa" href="https://wa.me/' + digits + '" target="_blank" rel="noopener">WhatsApp</a>';
+        contactsHtml += '<a class="by-chip tg js-msg-chip js-channel-chip' + clickedClass('tg') + '" data-channel="tg"'
+          + ' href="https://t.me/+' + digits + '" target="_blank" rel="noopener"'
+          + ' title="Скопирует текст сообщения в буфер обмена и откроет чат в Telegram">' + clickedMark('tg') + 'Telegram</a>';
+        contactsHtml += '<a class="by-chip wa js-msg-chip js-channel-chip' + clickedClass('wa') + '" data-channel="wa"'
+          + ' href="https://wa.me/' + digits + '" target="_blank" rel="noopener"'
+          + ' title="Скопирует текст сообщения в буфер обмена и откроет чат в WhatsApp">' + clickedMark('wa') + 'WhatsApp</a>';
         // У MAX нет прямых ссылок на контакт по номеру (в отличие от t.me/wa.me) —
-        // копируем номер и открываем max.ru, чтобы найти контакт вручную.
-        contactsHtml += '<button type="button" class="by-chip max js-max-chip" data-phone="' + b.phone
-          + '" title="В MAX нет прямой ссылки на контакт по номеру — кнопка скопирует номер и откроет max.ru">MAX</button>';
+        // копируем текст сообщения и открываем max.ru, чтобы найти контакт вручную.
+        contactsHtml += '<button type="button" class="by-chip max js-max-chip js-channel-chip' + clickedClass('max') + '" data-channel="max"'
+          + ' title="В MAX нет прямой ссылки на контакт по номеру — кнопка скопирует текст сообщения и откроет max.ru">' + clickedMark('max') + 'MAX</button>';
       }
     } else {
       contactsHtml += '<span class="by-chip missing">телефон не найден</span>';
@@ -331,21 +369,25 @@
       '</div>' +
       meetingRow;
 
+    card.querySelectorAll('.js-channel-chip').forEach(function (chip) {
+      var channel = chip.dataset.channel;
+      if (channel === 'max') return; // у MAX своя обработка ниже (копирование + временный текст)
+      chip.addEventListener('click', function () {
+        markChannelClick(b.rank, channel, chip);
+        if (chip.classList.contains('js-msg-chip')) copyToClipboard(buildMessageBody(b));
+      });
+    });
+
     var maxChip = card.querySelector('.js-max-chip');
     if (maxChip) {
       maxChip.addEventListener('click', function () {
-        var phone = maxChip.dataset.phone;
+        markChannelClick(b.rank, 'max', maxChip);
         var originalLabel = maxChip.textContent;
-        function openMax() {
+        copyToClipboard(buildMessageBody(b), function () {
           window.open('https://max.ru/', '_blank', 'noopener');
           maxChip.textContent = 'Скопировано!';
           setTimeout(function () { maxChip.textContent = originalLabel; }, 1800);
-        }
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(phone).then(openMax).catch(openMax);
-        } else {
-          openMax();
-        }
+        });
       });
     }
 
