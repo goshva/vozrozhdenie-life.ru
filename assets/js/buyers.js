@@ -80,6 +80,7 @@
     card.dataset.rank = b.rank;
     card.dataset.search = (b.company + ' ' + b.region + ' ' + b.profile).toLowerCase();
     card.dataset.priority = b.priority;
+    card.dataset.hasEmail = b.email ? '1' : '0';
 
     var contactsHtml = '';
     if (b.email) {
@@ -221,12 +222,13 @@
     return {
       q: document.getElementById('bySearch').value || '',
       prio: document.getElementById('byPrioFilter').value || '',
-      status: document.getElementById('byStatusFilter').value || ''
+      status: document.getElementById('byStatusFilter').value || '',
+      email: document.getElementById('byEmailFilter').value || ''
     };
   }
 
   function updateFilterBadge(vals) {
-    var count = (vals.q ? 1 : 0) + (vals.prio ? 1 : 0) + (vals.status ? 1 : 0);
+    var count = (vals.q ? 1 : 0) + (vals.prio ? 1 : 0) + (vals.status ? 1 : 0) + (vals.email ? 1 : 0);
     var badge = document.getElementById('byFilterBadge');
     var clearBtn = document.getElementById('byClearFiltersBtn');
     if (badge) { badge.hidden = count === 0; badge.textContent = count; }
@@ -252,7 +254,10 @@
       if (statusFilter === 'not-sent') matchesStatus = !isSent;
       else if (statusFilter === 'sent') matchesStatus = isSent;
       else if (statusFilter === 'due') matchesStatus = isDue;
-      var show = matchesQ && matchesPrio && matchesStatus;
+      var matchesEmail = true;
+      if (vals.email === 'has') matchesEmail = card.dataset.hasEmail === '1';
+      else if (vals.email === 'missing') matchesEmail = card.dataset.hasEmail === '0';
+      var show = matchesQ && matchesPrio && matchesStatus && matchesEmail;
       card.hidden = !show;
       if (show) visible++;
     });
@@ -263,7 +268,7 @@
     updateFilterBadge(vals);
 
     var prefs = loadFilterPrefs();
-    prefs.q = vals.q; prefs.prio = vals.prio; prefs.status = vals.status;
+    prefs.q = vals.q; prefs.prio = vals.prio; prefs.status = vals.status; prefs.email = vals.email;
     saveFilterPrefs(prefs);
   }
 
@@ -292,13 +297,15 @@
     if (prefs.q) document.getElementById('bySearch').value = prefs.q;
     if (prefs.prio) document.getElementById('byPrioFilter').value = prefs.prio;
     if (prefs.status) document.getElementById('byStatusFilter').value = prefs.status;
-    var hasActiveFilters = !!(prefs.q || prefs.prio || prefs.status);
+    if (prefs.email) document.getElementById('byEmailFilter').value = prefs.email;
+    var hasActiveFilters = !!(prefs.q || prefs.prio || prefs.status || prefs.email);
     setPanelOpen(prefs.open === true || hasActiveFilters);
     applyFilters();
 
     document.getElementById('bySearch').addEventListener('input', applyFilters);
     document.getElementById('byPrioFilter').addEventListener('change', applyFilters);
     document.getElementById('byStatusFilter').addEventListener('change', applyFilters);
+    document.getElementById('byEmailFilter').addEventListener('change', applyFilters);
 
     document.getElementById('byToggleBtn').addEventListener('click', function () {
       var panel = document.getElementById('byFilterPanel');
@@ -309,6 +316,7 @@
       document.getElementById('bySearch').value = '';
       document.getElementById('byPrioFilter').value = '';
       document.getElementById('byStatusFilter').value = '';
+      document.getElementById('byEmailFilter').value = '';
       applyFilters();
     });
 
