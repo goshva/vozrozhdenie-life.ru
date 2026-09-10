@@ -22,9 +22,9 @@ var BUYERS = [
   "priority": "A+",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
-  "phone": "",
-  "website": ""
+  "email": "zem-bank@inbox.ru",
+  "phone": "+7 (495) 201-5361",
+  "website": "https://zem-bank.ru/"
  },
  {
   "rank": 3,
@@ -100,7 +100,7 @@ var BUYERS = [
   "priority": "A+",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
+  "email": "odp@villagio.ru",
   "phone": "+7 (495) 974-00-00",
   "website": "https://villagio.ru/"
  },
@@ -477,8 +477,8 @@ var BUYERS = [
   "priority": "B",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
-  "phone": "",
+  "email": "info@rosbrus.by",
+  "phone": "+375 (29) 344-11-22",
   "website": "https://rosbrus.by"
  },
  {
@@ -490,9 +490,9 @@ var BUYERS = [
   "priority": "B",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
-  "phone": "",
-  "website": ""
+  "email": "marketing@unicomdevelopment.ru",
+  "phone": "+7 (495) 236-99-20",
+  "website": "https://unicomdevelopment.ru"
  },
  {
   "rank": 39,
@@ -517,8 +517,8 @@ var BUYERS = [
   "contactName": "",
   "contactPosition": "",
   "email": "",
-  "phone": "",
-  "website": ""
+  "phone": "+7 (495) 410-41-41",
+  "website": "https://libropark.ru/"
  },
  {
   "rank": 41,
@@ -620,7 +620,7 @@ var BUYERS = [
   "priority": "B",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
+  "email": "info@sit-company.ru",
   "phone": "+7 (495) 181-25-27",
   "website": "https://sit-company.ru"
  },
@@ -750,7 +750,7 @@ var BUYERS = [
   "priority": "B",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
+  "email": "info@zagmir.ru",
   "phone": "+7 (495) 788-78-77",
   "website": "https://zagmir.ru"
  },
