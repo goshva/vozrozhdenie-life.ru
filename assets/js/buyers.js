@@ -149,8 +149,11 @@
     var showCalled = !!(st.sentAt || st.corrAt);
     var showAppSelect = !!(st.corrAt || false);
 
+    var hasContactHistory = !!(st.sentAt || st.corrAt || st.calledAt);
     var meetingRow;
-    if (st.meeting) {
+    if (!hasContactHistory) {
+      meetingRow = '';
+    } else if (st.meeting) {
       meetingRow = '<div class="by-meeting-row">' +
         '<span class="by-meeting-badge">&#128197; Встреча: ' + st.meeting.date + ' ' + st.meeting.time + ' &middot; ' + st.meeting.place +
         ' <button type="button" class="by-meeting-edit js-meeting-edit">изменить</button></span>' +
