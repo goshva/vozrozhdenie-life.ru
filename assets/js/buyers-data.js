@@ -126,7 +126,7 @@ var BUYERS = [
   "priority": "A",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
+  "email": "marketing@unicomdevelopment.ru",
   "phone": "+7 (495) 236-99-20",
   "website": "https://unicomdevelopment.ru/"
  },
@@ -165,9 +165,9 @@ var BUYERS = [
   "priority": "A",
   "contactName": "Ахматханов Фаиль Фаритович",
   "contactPosition": "Генеральный директор",
-  "email": "",
-  "phone": "",
-  "website": ""
+  "email": "info@larhan.ru",
+  "phone": "8 (800) 700-66-74",
+  "website": "https://larhan.ru/"
  },
  {
   "rank": 14,
@@ -191,8 +191,8 @@ var BUYERS = [
   "priority": "A",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
-  "phone": "",
+  "email": "info@poselok-britanika.ru",
+  "phone": "+7 (903) 111-86-12",
   "website": "https://easyhome.life/"
  },
  {
@@ -204,9 +204,9 @@ var BUYERS = [
   "priority": "A",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
-  "phone": "+7 (495) 156-44-88",
-  "website": "https://domovedov.clients.site/"
+  "email": "snabjenie@egorievka.ru",
+  "phone": "+7 (495) 032-40-00",
+  "website": "https://egorievka.ru/"
  },
  {
   "rank": 17,
@@ -230,8 +230,8 @@ var BUYERS = [
   "priority": "A",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
-  "phone": "",
+  "email": "info@fahverk-house.ru",
+  "phone": "+7 495 789-27-55",
   "website": "https://www.fahverk-house.ru/"
  },
  {
@@ -269,7 +269,7 @@ var BUYERS = [
   "priority": "A",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
+  "email": "info-olimp48@mail.ru",
   "phone": "+7 (474) 271-28-82",
   "website": "https://olimp48.ru/"
  },
@@ -321,9 +321,9 @@ var BUYERS = [
   "priority": "A",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
-  "phone": "",
-  "website": ""
+  "email": "lipetskdom@bk.ru",
+  "phone": " +7 (4742) 24-20-20",
+  "website": "https://lipetsk-dom.ru/"
  },
  {
   "rank": 26,
@@ -336,7 +336,7 @@ var BUYERS = [
   "contactPosition": "",
   "email": "honka@honka-moscow.ru",
   "phone": "+7 (495) 921-30-01",
-  "website": ""
+  "website": "https://honka.by"
  },
  {
   "rank": 27,
@@ -360,7 +360,7 @@ var BUYERS = [
   "priority": "A",
   "contactName": "Гончаров Сергей Викторович",
   "contactPosition": "Генеральный директор",
-  "email": "",
+  "email": "npssv@mail.ru",
   "phone": "+7 (473) 205-10-10",
   "website": ""
  },
@@ -386,9 +386,9 @@ var BUYERS = [
   "priority": "A",
   "contactName": "Двуреченский Станислав Геннадьевич",
   "contactPosition": "Генеральный директор",
-  "email": "",
-  "phone": "",
-  "website": ""
+  "email": "dir@garantstroit.ru",
+  "phone": "+7 (4742) 717-945",
+  "website": "https://garantstroit.ru/"
  },
  {
   "rank": 31,
@@ -438,9 +438,9 @@ var BUYERS = [
   "priority": "B",
   "contactName": "",
   "contactPosition": "",
-  "email": "",
-  "phone": "",
-  "website": ""
+  "email": "sro@sro-sa.ru",
+  "phone": "+7 (495) 225 38 78 ",
+  "website": "https://www.sro-stroyalliance.ru"
  },
  {
   "rank": 35,
