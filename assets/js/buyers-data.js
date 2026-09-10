@@ -2053,5 +2053,18 @@ var BUYERS = [
   "email": "info@masterplans.ru",
   "phone": "+7 (499) 110-29-23",
   "website": "https://цфа.рф/"
+ },
+ {
+  "rank": 159,
+  "company": "АО «ТАМАК»",
+  "region": "Тамбовская область",
+  "profile": "PREFAB, каркасно-панельные дома, клеёные конструкции — серийная застройка",
+  "score": "86",
+  "priority": "A",
+  "contactName": "",
+  "contactPosition": "",
+  "email": "sales@tamak.ru",
+  "phone": "8 (800) 300-89-77",
+  "website": "https://www.tamak.ru/"
  }
 ];
