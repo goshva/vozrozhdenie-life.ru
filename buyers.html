@@ -73,6 +73,20 @@
   <p class="by-empty" id="byEmpty" hidden>Ничего не найдено по этим фильтрам.</p>
 
   <p class="by-foot">Контакты собраны из открытых источников (официальные сайты компаний, ЕГРЮЛ/rusprofile, 2GIS) на сентябрь 2026 года и не гарантируют актуальность — часть компаний не публикует контакты вовсе, часть полей может устареть. Перед массовой рассылкой рекомендуется выборочно проверить ключевые (A+/A) контакты. Ссылка на эту страницу не индексируется поисковиками (noindex), но не защищена паролем.</p>
+
+  <div class="by-backup">
+    <h2>Резервная копия отметок</h2>
+    <p>Все отметки ("письмо", "переписка", "прозвонили", "встреча") хранятся только в этом браузере и пропадут при очистке данных сайта. Скачайте копию или отправьте её себе на почту, а на другом устройстве — загрузите файл обратно: загрузка объединяется с уже записанными здесь отметками и ничего не удаляет.</p>
+    <div class="by-backup-actions">
+      <button class="by-backup-btn" id="byExportBtn" type="button">&#11015; Скачать копию (JSON)</button>
+      <button class="by-backup-btn" id="byEmailBtn" type="button">&#9993; Отправить копию на email</button>
+      <label class="by-backup-btn by-backup-upload" for="byImportInput">
+        &#11014; Загрузить копию
+        <input type="file" id="byImportInput" accept="application/json,.json" hidden>
+      </label>
+    </div>
+    <p class="by-backup-status" id="byBackupStatus" hidden></p>
+  </div>
 </div>
 
 <script>

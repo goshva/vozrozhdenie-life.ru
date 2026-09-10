@@ -36,6 +36,127 @@
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {}
   }
 
+  /* ---------------- Резервная копия отметок: скачивание JSON-файла,
+     отправка копии на почту через mailto: (без бэкенда) и загрузка файла
+     обратно с объединением по каждой записи, чтобы не терять то, что уже
+     отмечено в этом браузере. */
+  var BACKUP_EMAIL = 'sha.egor@gmail.ru';
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+
+  function backupFileName() {
+    var d = new Date();
+    return 'vozrozhdenie-buyers-backup-' + d.getFullYear() + pad2(d.getMonth() + 1) + pad2(d.getDate())
+      + '-' + pad2(d.getHours()) + pad2(d.getMinutes()) + '.json';
+  }
+
+  function buildBackupPayload() {
+    return { exportedAt: new Date().toISOString(), source: SITE, state: loadState() };
+  }
+
+  function triggerFileDownload(text, filename) {
+    var blob = new Blob([text], { type: 'application/json' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  function showBackupStatus(text, isError) {
+    var el = document.getElementById('byBackupStatus');
+    if (!el) return;
+    el.textContent = text;
+    el.hidden = false;
+    el.classList.toggle('is-error', !!isError);
+  }
+
+  function exportBackup() {
+    triggerFileDownload(JSON.stringify(buildBackupPayload(), null, 2), backupFileName());
+    showBackupStatus('Файл резервной копии скачан.', false);
+  }
+
+  function emailBackup() {
+    var payload = buildBackupPayload();
+    var compactJson = JSON.stringify(payload);
+    var subject = 'Возрождение — резервная копия отметок покупателей';
+    var body;
+    if (compactJson.length > 1800) {
+      // Слишком длинный текст письма многие почтовые клиенты обрезают —
+      // в этом случае скачиваем файл и просим приложить его вручную.
+      var filename = backupFileName();
+      triggerFileDownload(JSON.stringify(payload, null, 2), filename);
+      body = 'Копия отметок слишком большая, чтобы поместиться в тело письма — она только что скачалась '
+        + 'файлом "' + filename + '". Прикрепите этот файл к письму вручную перед отправкой.';
+    } else {
+      body = 'Резервная копия отметок покупателей (JSON). Чтобы восстановить на другом устройстве — '
+        + 'сохраните текст ниже в .json-файл и загрузите его кнопкой "Загрузить копию" на странице рассылки:\n\n'
+        + compactJson;
+    }
+    window.location.href = 'mailto:' + encodeURIComponent(BACKUP_EMAIL)
+      + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    showBackupStatus('Открываю почтовый клиент со сформированным письмом на ' + BACKUP_EMAIL + '…', false);
+  }
+
+  function mergeStates(current, incoming) {
+    var merged = {};
+    var ranks = {};
+    Object.keys(current || {}).forEach(function (k) { ranks[k] = true; });
+    Object.keys(incoming || {}).forEach(function (k) { ranks[k] = true; });
+    Object.keys(ranks).forEach(function (rank) {
+      var a = (current && current[rank]) || {};
+      var b = (incoming && incoming[rank]) || {};
+      var m = {};
+      ['sentAt', 'corrAt', 'calledAt'].forEach(function (f) {
+        if (a[f] && b[f]) m[f] = Math.max(a[f], b[f]);
+        else if (a[f] || b[f]) m[f] = a[f] || b[f];
+      });
+      if (a.corrApp || b.corrApp) m.corrApp = a.corrApp || b.corrApp;
+      if (a.meeting || b.meeting) {
+        m.meeting = (b.meeting && (!a.meeting || (b.meeting.setAt || 0) > (a.meeting.setAt || 0))) ? b.meeting : a.meeting;
+      }
+      merged[rank] = m;
+    });
+    return merged;
+  }
+
+  function importBackupFile(file) {
+    var reader = new FileReader();
+    reader.onload = function () {
+      var parsed;
+      try {
+        parsed = JSON.parse(reader.result);
+      } catch (e) {
+        showBackupStatus('Не удалось прочитать файл — это не корректный JSON.', true);
+        return;
+      }
+      var incomingState = parsed && typeof parsed === 'object' && parsed.state ? parsed.state : parsed;
+      if (!incomingState || typeof incomingState !== 'object') {
+        showBackupStatus('В файле не найдены отметки для загрузки.', true);
+        return;
+      }
+      var merged = mergeStates(loadState(), incomingState);
+      saveState(merged);
+
+      var list = document.getElementById('byList');
+      list.innerHTML = '';
+      var frag = document.createDocumentFragment();
+      allBuyers.forEach(function (b) { frag.appendChild(renderCard(b, merged)); });
+      list.appendChild(frag);
+      updateStats();
+      applyFilters();
+
+      showBackupStatus('Загружено и объединено с текущими отметками: ' + Object.keys(incomingState).length + ' записей из файла.', false);
+    };
+    reader.onerror = function () {
+      showBackupStatus('Не удалось прочитать файл.', true);
+    };
+    reader.readAsText(file);
+  }
+
   function digitsOnly(phone) {
     if (!phone) return '';
     var d = phone.replace(/[^\d]/g, '');
@@ -440,6 +561,21 @@
       document.getElementById('byEmailFilter').value = '';
       applyFilters();
     });
+
+    var exportBtn = document.getElementById('byExportBtn');
+    if (exportBtn) exportBtn.addEventListener('click', exportBackup);
+
+    var emailBtn = document.getElementById('byEmailBtn');
+    if (emailBtn) emailBtn.addEventListener('click', emailBackup);
+
+    var importInput = document.getElementById('byImportInput');
+    if (importInput) {
+      importInput.addEventListener('change', function () {
+        var file = importInput.files && importInput.files[0];
+        if (file) importBackupFile(file);
+        importInput.value = '';
+      });
+    }
 
     document.getElementById('byResetBtn').addEventListener('click', function () {
       if (!confirm('Сбросить все отметки "отправлено"/"прозвонили" по всем ' + allBuyers.length + ' записям? (Фильтры это не затронет.)')) return;
