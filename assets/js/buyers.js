@@ -304,8 +304,9 @@
     }
     var bounceBadge = st.bounced ? '<span class="by-bouncebadge">&#9888; Письмо не дошло</span>' : '';
     if (st.sentAt) card.classList.add('is-sent');
-    if (isDue) card.classList.add('is-due');
+    if (isDue && !st.refused) card.classList.add('is-due');
     if (st.bounced) card.classList.add('is-bounced');
+    if (st.refused) card.classList.add('is-refused');
 
     var infoBits = [];
     if (st.sentAt) infoBits.push('письмо ' + fmtDateTime(st.sentAt) + (st.bounced ? ' — не дошло, ящик не существует' : ''));
@@ -345,6 +346,10 @@
       '</div>';
     }
 
+    var refuseBadge = st.refused
+      ? '<span class="by-refusebadge">&#10006; Прямой отказ' + (st.refusedAt ? ' &middot; ' + fmtDate(st.refusedAt) : '') + '</span>'
+      : '';
+
     card.innerHTML =
       '<div class="by-top">' +
         '<div>' +
@@ -354,25 +359,29 @@
         '</div>' +
         '<span class="by-badge ' + priorityClass(b.priority) + '">' + b.priority + '</span>' +
       '</div>' +
-      '<div class="by-contacts">' + contactsHtml + '</div>' +
-      '<div class="by-bottom">' +
-        '<div class="by-checks">' +
-          '<label class="by-check"><input type="checkbox" class="js-sent" ' + (st.sentAt ? 'checked' : '') + '> Письмо отправлено</label>' +
-          (st.sentAt ? '<label class="by-check by-check-warn"><input type="checkbox" class="js-bounced" ' + (st.bounced ? 'checked' : '') + '> Письмо не дошло (ящика не существует)</label>' : '') +
-          '<label class="by-check"><input type="checkbox" class="js-corr" ' + (st.corrAt ? 'checked' : '') + '> Переписка с менеджером</label>' +
-          (showAppSelect ? (
-            '<select class="by-app-select js-app">' +
-              '<option value="">Приложение…</option>' +
-              Object.keys(APP_LABELS).map(function (k) {
-                return '<option value="' + k + '"' + (st.corrApp === k ? ' selected' : '') + '>' + APP_LABELS[k] + '</option>';
-              }).join('') +
-            '</select>'
-          ) : '') +
-          (showCalled ? '<label class="by-check"><input type="checkbox" class="js-called" ' + (st.calledAt ? 'checked' : '') + '> Прозвонили</label>' : '') +
+      '<label class="by-check by-check-refuse"><input type="checkbox" class="js-refused" ' + (st.refused ? 'checked' : '') + '> Прямой отказ</label>' +
+      refuseBadge +
+      '<div class="by-card-body"' + (st.refused ? ' hidden' : '') + '>' +
+        '<div class="by-contacts">' + contactsHtml + '</div>' +
+        '<div class="by-bottom">' +
+          '<div class="by-checks">' +
+            '<label class="by-check"><input type="checkbox" class="js-sent" ' + (st.sentAt ? 'checked' : '') + '> Письмо отправлено</label>' +
+            (st.sentAt ? '<label class="by-check by-check-warn"><input type="checkbox" class="js-bounced" ' + (st.bounced ? 'checked' : '') + '> Письмо не дошло (ящика не существует)</label>' : '') +
+            '<label class="by-check"><input type="checkbox" class="js-corr" ' + (st.corrAt ? 'checked' : '') + '> Переписка с менеджером</label>' +
+            (showAppSelect ? (
+              '<select class="by-app-select js-app">' +
+                '<option value="">Приложение…</option>' +
+                Object.keys(APP_LABELS).map(function (k) {
+                  return '<option value="' + k + '"' + (st.corrApp === k ? ' selected' : '') + '>' + APP_LABELS[k] + '</option>';
+                }).join('') +
+              '</select>'
+            ) : '') +
+            (showCalled ? '<label class="by-check"><input type="checkbox" class="js-called" ' + (st.calledAt ? 'checked' : '') + '> Прозвонили</label>' : '') +
+          '</div>' +
+          (bounceBadge + (dueBadge || sentInfo)) +
         '</div>' +
-        (bounceBadge + (dueBadge || sentInfo)) +
-      '</div>' +
-      meetingRow;
+        meetingRow +
+      '</div>';
 
     card.querySelectorAll('.js-channel-chip').forEach(function (chip) {
       var channel = chip.dataset.channel;
@@ -395,6 +404,21 @@
         });
       });
     }
+
+    var refusedCb = card.querySelector('.js-refused');
+    refusedCb.addEventListener('change', function () {
+      state = loadState();
+      state[b.rank] = state[b.rank] || {};
+      if (refusedCb.checked) {
+        state[b.rank].refused = true;
+        state[b.rank].refusedAt = Date.now();
+      } else {
+        delete state[b.rank].refused;
+        delete state[b.rank].refusedAt;
+      }
+      saveState(state);
+      rerenderCard(b, state);
+    });
 
     var sentCb = card.querySelector('.js-sent');
     sentCb.addEventListener('change', function () {
