@@ -347,7 +347,7 @@ var BUYERS = [
   "priority": "A",
   "contactName": "",
   "contactPosition": "",
-  "email": "office@vrndk.ru",
+  "email": "kvartiry@vrndk.ru",
   "phone": "+7 (473) 202-00-87",
   "website": "https://vrndk.ru/"
  },
