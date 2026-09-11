@@ -290,7 +290,9 @@
       ? '<div class="by-meta">' + b.contactName + (b.contactPosition ? ' — ' + b.contactPosition : '') + '</div>'
       : '';
 
-    var baseAt = Math.max(st.sentAt || 0, st.corrAt || 0);
+    // Недошедшее письмо не считается доставленным контактом — не запускает
+    // напоминание позвонить и не засчитывается как история контакта.
+    var baseAt = Math.max(st.bounced ? 0 : (st.sentAt || 0), st.corrAt || 0);
     var dueBadge = '';
     var isDue = false;
     if (baseAt && !st.calledAt) {
@@ -300,11 +302,13 @@
         dueBadge = '<span class="by-duebadge">&#128222; Пора позвонить</span>';
       }
     }
+    var bounceBadge = st.bounced ? '<span class="by-bouncebadge">&#9888; Письмо не дошло</span>' : '';
     if (st.sentAt) card.classList.add('is-sent');
     if (isDue) card.classList.add('is-due');
+    if (st.bounced) card.classList.add('is-bounced');
 
     var infoBits = [];
-    if (st.sentAt) infoBits.push('письмо ' + fmtDateTime(st.sentAt));
+    if (st.sentAt) infoBits.push('письмо ' + fmtDateTime(st.sentAt) + (st.bounced ? ' — не дошло, ящик не существует' : ''));
     if (st.corrAt) infoBits.push('переписка (' + (APP_LABELS[st.corrApp] || 'приложение не выбрано') + ') ' + fmtDateTime(st.corrAt));
     if (st.calledAt) infoBits.push('прозвонили ' + fmtDate(st.calledAt));
     var sentInfo = infoBits.length ? '<span class="by-sentinfo">' + infoBits.join(' &middot; ') + '</span>' : '';
@@ -312,7 +316,7 @@
     var showCalled = !!(st.sentAt || st.corrAt);
     var showAppSelect = !!(st.corrAt || false);
 
-    var hasContactHistory = !!(st.sentAt || st.corrAt || st.calledAt);
+    var hasContactHistory = !!((st.sentAt && !st.bounced) || st.corrAt || st.calledAt);
     var meetingRow;
     if (!hasContactHistory) {
       meetingRow = '';
@@ -354,6 +358,7 @@
       '<div class="by-bottom">' +
         '<div class="by-checks">' +
           '<label class="by-check"><input type="checkbox" class="js-sent" ' + (st.sentAt ? 'checked' : '') + '> Письмо отправлено</label>' +
+          (st.sentAt ? '<label class="by-check by-check-warn"><input type="checkbox" class="js-bounced" ' + (st.bounced ? 'checked' : '') + '> Письмо не дошло (ящика не существует)</label>' : '') +
           '<label class="by-check"><input type="checkbox" class="js-corr" ' + (st.corrAt ? 'checked' : '') + '> Переписка с менеджером</label>' +
           (showAppSelect ? (
             '<select class="by-app-select js-app">' +
@@ -365,7 +370,7 @@
           ) : '') +
           (showCalled ? '<label class="by-check"><input type="checkbox" class="js-called" ' + (st.calledAt ? 'checked' : '') + '> Прозвонили</label>' : '') +
         '</div>' +
-        (dueBadge || sentInfo) +
+        (bounceBadge + (dueBadge || sentInfo)) +
       '</div>' +
       meetingRow;
 
@@ -400,10 +405,29 @@
       } else {
         delete state[b.rank].sentAt;
         delete state[b.rank].calledAt;
+        delete state[b.rank].bounced;
+        delete state[b.rank].bouncedAt;
       }
       saveState(state);
       rerenderCard(b, state);
     });
+
+    var bouncedCb = card.querySelector('.js-bounced');
+    if (bouncedCb) {
+      bouncedCb.addEventListener('change', function () {
+        state = loadState();
+        state[b.rank] = state[b.rank] || {};
+        if (bouncedCb.checked) {
+          state[b.rank].bounced = true;
+          state[b.rank].bouncedAt = Date.now();
+        } else {
+          delete state[b.rank].bounced;
+          delete state[b.rank].bouncedAt;
+        }
+        saveState(state);
+        rerenderCard(b, state);
+      });
+    }
 
     var calledCb = card.querySelector('.js-called');
     if (calledCb) {
