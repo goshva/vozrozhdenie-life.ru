@@ -586,19 +586,6 @@ var BUYERS = [
   "website": "https://aps-dsk.ru"
  },
  {
-  "rank": 46,
-  "company": "ИНХАУЗ",
-  "region": "Москва/МО",
-  "profile": "Коттеджный девелопер",
-  "score": "76",
-  "priority": "B",
-  "contactName": "Житов Владимир Владимирович",
-  "contactPosition": "Генеральный директор",
-  "email": "info@inhauz.ru",
-  "phone": "+7 (499) 490-16-83",
-  "website": "https://inhauz.ru"
- },
- {
   "rank": 47,
   "company": "Gletcher",
   "region": "Москва/МО",
