@@ -347,7 +347,7 @@ var BUYERS = [
   "priority": "A",
   "contactName": "",
   "contactPosition": "",
-  "email": "office@vrndk.ru",
+  "email": "kvartiry@vrndk.ru",
   "phone": "+7 (473) 202-00-87",
   "website": "https://vrndk.ru/"
  },
@@ -584,19 +584,6 @@ var BUYERS = [
   "email": "info@aps-dsk.ru",
   "phone": "+7 (495) 565-30-55",
   "website": "https://aps-dsk.ru"
- },
- {
-  "rank": 46,
-  "company": "ИНХАУЗ",
-  "region": "Москва/МО",
-  "profile": "Коттеджный девелопер",
-  "score": "76",
-  "priority": "B",
-  "contactName": "Житов Владимир Владимирович",
-  "contactPosition": "Генеральный директор",
-  "email": "info@inhauz.ru",
-  "phone": "+7 (499) 490-16-83",
-  "website": "https://inhauz.ru"
  },
  {
   "rank": 47,
