@@ -20,444 +20,82 @@
   <div class="wrap">
     <a class="inv-back" href="index.html">&larr; На главную</a>
     <h1>Инвесторы и партнёры «Возрождения»</h1>
-    <p>Список адресатов для рассылки инвестиционного тизера — с контактами, похожими активными организациями и трекером статуса переговоров. Статусы и заметки сохраняются только в этом браузере (localStorage), никуда не отправляются.</p>
+    <p>База из <span id="invTotal">—</span> адресатов для рассылки инвестиционного тизера: официальные региональные каналы, брокеры земли, прямые стратегические покупатели, белорусские застройщики, маркетплейсы и клубы инвесторов. Отметьте контакт галкой по мере рассылки — на следующий рабочий день карточка подсветится напоминанием позвонить. Всё сохраняется только в этом браузере.</p>
     <div class="note">Готового на 100% покупателя не существует до реальных переговоров. Это квалифицированная воронка — отобрана по фактическому профилю (уже строят серийные посёлки в регионе, официально ищут земельные проекты или брокеруют такие сделки), а не случайная рассылка.</div>
   </div>
 </div>
 
 <div class="wrap">
-
-  <div class="inv-topbar">
-    <div class="tdesc">Отмечайте статус по каждому адресату по мере рассылки — сохраняется автоматически.</div>
-    <button class="inv-resetbtn" id="invResetBtn" type="button">Сбросить отметки</button>
-  </div>
-  <div class="inv-progresswrap">
-    <div class="inv-progresstrack"><div class="inv-progressfill" id="invProgressFill"></div></div>
-    <div class="inv-progresslbl" id="invProgressLbl">0 / 0 в работе</div>
+  <div class="inv-stats">
+    <div class="inv-stat"><div class="n" id="invTotal2">—</div><div class="l">всего в базе</div></div>
+    <div class="inv-stat"><div class="n" id="invSent">0</div><div class="l">контактов сделано</div></div>
+    <div class="inv-stat"><div class="n" id="invLeft">—</div><div class="l">ещё не писали</div></div>
+    <div class="inv-stat"><div class="n" id="invDue">0</div><div class="l">пора позвонить</div></div>
   </div>
 
-  <section class="inv-tier">
-    <div class="kicker">Тир A &middot; Официальный региональный канал</div>
-    <h2>Липецкая область</h2>
-    <p class="tdesc">Бесплатный «единое окно» для инвесторов — региональная корпорация развития подбирает и сопровождает инвесторов под конкретные площадки, включая Добровский округ.</p>
-    <div class="inv-leads">
-      <div class="inv-lead" data-id="a1">
-        <div>
-          <div class="inv-lead-name">Корпорация развития Липецкой области</div>
-          <div class="inv-lead-why">Официальный «единый диспетчерский центр» для инвесторов региона — бесплатно сопровождает проект на всех стадиях, ищет инвесторов под конкретные площадки (уже вела подбор под Елецкий район).</div>
-          <div class="inv-lead-contacts">
-            <a href="https://invest-lipetsk.ru/" target="_blank" rel="noopener">invest-lipetsk.ru</a>
-            <span class="missing">прямой телефон/email на сайте не публикуются — только форма обращения</span>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">госструктура</span><span class="inv-tag">бесплатно</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="a1"></select>
-          <textarea class="inv-note" data-id="a1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="a1s1">
-        <div>
-          <div class="inv-lead-name">Департамент инвестиций Липецкой области (смежная структура)</div>
-          <div class="inv-lead-why">Прямого контакта Корпорации развития нет в открытом доступе — департамент курирует тот же круг вопросов и может переадресовать в Корпорацию.</div>
-          <div class="inv-lead-contacts"><a href="tel:+74742275583">+7 (4742) 27-55-83</a></div>
-          <div class="inv-lead-meta"><span class="inv-tag">смежный контакт</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="a1s1"></select>
-          <textarea class="inv-note" data-id="a1s1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead" data-id="a2">
-        <div>
-          <div class="inv-lead-name">Инвестиционный портал Липецкой области</div>
-          <div class="inv-lead-why">Официальный каталог инвестплощадок региона — размещение проекта расширяет охват на инвесторов, которые уже целенаправленно ищут проекты именно в Липецкой области.</div>
-          <div class="inv-lead-contacts">
-            <a href="https://investinlipetsk.ru/" target="_blank" rel="noopener">investinlipetsk.ru</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">листинг</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="a2"></select>
-          <textarea class="inv-note" data-id="a2" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="a2s1">
-        <div>
-          <div class="inv-lead-name">Агентство по привлечению инвестиций Воронежской области</div>
-          <div class="inv-lead-why">Аналогичный региональный институт соседней области — полезен, если строительный партнёр или инвестор базируется в Воронеже.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+74732127007">+7 (473) 212-70-07</a>
-            <a href="mailto:api@govvrn.ru">api@govvrn.ru</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">соседний регион</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="a2s1"></select>
-          <textarea class="inv-note" data-id="a2s1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="a2s2">
-        <div>
-          <div class="inv-lead-name">Корпорация развития Тамбовской области</div>
-          <div class="inv-lead-why">Аналогичный региональный институт — актуален для контакта с АО «ТАМАК» и другими тамбовскими партнёрами.</div>
-          <div class="inv-lead-contacts"><a href="tel:+74752559745">+7 (4752) 55-97-45</a></div>
-          <div class="inv-lead-meta"><span class="inv-tag">соседний регион</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="a2s2"></select>
-          <textarea class="inv-note" data-id="a2s2" placeholder="заметка"></textarea>
-        </div>
-      </div>
+  <div class="inv-controls">
+    <button class="inv-togglebar" id="invToggleBtn" type="button" aria-expanded="false" aria-controls="invFilterPanel">
+      <span class="inv-togglebar-left">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+        Фильтры
+        <span class="inv-filterbadge" id="invFilterBadge" hidden>0</span>
+      </span>
+      <span class="inv-togglebar-right">
+        Показано <span id="invVisibleCount">—</span> из <span id="invTotal3">—</span>
+        <svg class="inv-chevron" id="invChevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </button>
+    <div class="inv-controls-inner" id="invFilterPanel" hidden>
+      <input class="inv-search" id="invSearch" type="search" placeholder="Поиск по названию, региону, причине…">
+      <select class="inv-filter" id="invTierFilter">
+        <option value="">Все тиры</option>
+        <option value="A">A — регион</option>
+        <option value="B">B — брокеры</option>
+        <option value="C">C — прямые покупатели</option>
+        <option value="D">D — Беларусь</option>
+        <option value="E">E — охват</option>
+      </select>
+      <select class="inv-filter" id="invStatusFilter">
+        <option value="">Все статусы</option>
+        <option value="not-sent">Не отправлено</option>
+        <option value="sent">Отправлено</option>
+        <option value="due">Пора позвонить</option>
+      </select>
+      <select class="inv-filter" id="invEmailFilter">
+        <option value="">Email — неважно</option>
+        <option value="has">Есть email</option>
+        <option value="missing">Нет email</option>
+      </select>
+      <button class="inv-clearfilters" id="invClearFiltersBtn" type="button" hidden>Сбросить фильтры</button>
+      <button class="inv-resetbtn" id="invResetBtn" type="button">Сбросить все отметки</button>
     </div>
-  </section>
+  </div>
 
-  <section class="inv-tier">
-    <div class="kicker">Тир B &middot; Институциональный канал</div>
-    <h2>Москва &middot; брокеридж земли и девелоперских проектов</h2>
-    <p class="tdesc">Профильная консалтинговая/брокерская компания федерального уровня с отдельным направлением по продаже участков под девелоперские проекты — выход на институциональных и частных инвесторов, которых нет в открытом поиске.</p>
-    <div class="inv-leads">
-      <div class="inv-lead" data-id="b1">
-        <div>
-          <div class="inv-lead-name">NF Group (Nikoliers)</div>
-          <div class="inv-lead-why">Бывший Knight Frank Russia; отдельное направление — продажа земельных участков под девелоперские проекты, работает с застройщиками и инвесторами федерального уровня.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+74952585151">+7 (495) 258-51-51</a>
-            <a href="mailto:kc@nikoliers.ru">kc@nikoliers.ru</a>
-            <a href="https://nikoliers.ru/land/" target="_blank" rel="noopener">nikoliers.ru/land</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">брокер</span><span class="inv-tag">Москва</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="b1"></select>
-          <textarea class="inv-note" data-id="b1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="b1s1">
-        <div>
-          <div class="inv-lead-name">CORE.XP</div>
-          <div class="inv-lead-why">Преемник российского бизнеса CBRE — консалтинг и брокеридж земельных активов под девелопмент.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+74952583990">+7 (495) 258-39-90</a>
-            <a href="mailto:info@core-xp.ru">info@core-xp.ru</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">брокер</span><span class="inv-tag">Москва</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="b1s1"></select>
-          <textarea class="inv-note" data-id="b1s1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="b1s2">
-        <div>
-          <div class="inv-lead-name">IBC Real Estate</div>
-          <div class="inv-lead-why">Консалтинг и брокеридж земельных активов, направление investment/development.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+74951650193">+7 (495) 165-01-93</a>
-            <span class="missing">email не подтверждён</span>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">брокер</span><span class="inv-tag">Москва</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="b1s2"></select>
-          <textarea class="inv-note" data-id="b1s2" placeholder="заметка"></textarea>
-        </div>
-      </div>
+  <div class="inv-list" id="invList"></div>
+  <p class="inv-empty" id="invEmpty" hidden>Ничего не найдено по этим фильтрам.</p>
+
+  <p class="inv-foot">Список отражает публично доступную информацию на сентябрь 2026 года и не является подтверждением интереса или платёжеспособности перечисленных сторон — это стартовая точка для адресной рассылки тизера и последующих переговоров. Часть организаций не публикует контакты вовсе — часть полей может устареть. Ссылка на эту страницу не индексируется поисковиками (noindex), но не защищена паролем — не считайте её приватной.</p>
+
+  <div class="inv-backup">
+    <h2>Резервная копия отметок</h2>
+    <p>Все отметки ("написали", "переписка", "прозвонили", "встреча", "отказ") хранятся только в этом браузере и пропадут при очистке данных сайта. Скачайте копию или отправьте её себе на почту, а на другом устройстве — загрузите файл обратно: загрузка объединяется с уже записанными здесь отметками и ничего не удаляет.</p>
+    <div class="inv-backup-actions">
+      <button class="inv-backup-btn" id="invExportBtn" type="button">&#11015; Скачать копию (JSON)</button>
+      <button class="inv-backup-btn" id="invEmailBtn" type="button">&#9993; Отправить копию на email</button>
+      <label class="inv-backup-btn inv-backup-upload" for="invImportInput">
+        &#11014; Загрузить копию
+        <input type="file" id="invImportInput" accept="application/json,.json" hidden>
+      </label>
     </div>
-  </section>
-
-  <section class="inv-tier">
-    <div class="kicker">Тир C &middot; Прямые стратегические покупатели</div>
-    <h2>Серийные застройщики коттеджных посёлков</h2>
-    <p class="tdesc">Уже профилированы в партнёрской концепции проекта как потенциальные строительные подрядчики — но каждый ведёт полный цикл серийной застройки посёлков, поэтому логично рассмотреть их и как покупателя актива целиком.</p>
-    <div class="inv-leads">
-      <div class="inv-lead" data-id="c1">
-        <div>
-          <div class="inv-lead-name">Dominimum</div>
-          <div class="inv-lead-why">Воронежская область — объёмно-модульные каркасные дома, заводская готовность, публично заявленная работа с эскроу. Ближайшее производство к массиву.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+79952500452">+7 (995) 250-04-52</a>
-            <a href="https://dominimum.ru/" target="_blank" rel="noopener">dominimum.ru</a>
-            <span class="missing">email не публикуется — только форма/мессенджеры</span>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">Воронеж</span><span class="inv-tag">9/10 в конц.</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="c1"></select>
-          <textarea class="inv-note" data-id="c1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-
-      <div class="inv-lead" data-id="c2">
-        <div>
-          <div class="inv-lead-name">АО «ТАМАК»</div>
-          <div class="inv-lead-why">Тамбовская область — индустриальный масштаб, PREFAB и клеёные конструкции, опыт полного цикла коттеджных посёлков (пример — 36 коттеджей «Март Хаус»).</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:88003008977">8 (800) 300-89-77</a>
-            <a href="mailto:sales@tamak.ru">sales@tamak.ru</a>
-            <a href="https://www.tamak.ru/" target="_blank" rel="noopener">tamak.ru</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">Тамбов</span><span class="inv-tag">9/10 в конц.</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="c2"></select>
-          <textarea class="inv-note" data-id="c2" placeholder="заметка"></textarea>
-        </div>
-      </div>
-
-      <div class="inv-lead" data-id="c3">
-        <div>
-          <div class="inv-lead-name">«Полесье»</div>
-          <div class="inv-lead-why">Присутствие непосредственно в Липецке, широкий каталог, локальная логистика — минимальное транспортное плечо до массива.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+79606716465">+7 (960) 671-64-65</a> (Липецк)
-            <a href="mailto:polisie36@yandex.ru">polisie36@yandex.ru</a>
-            <a href="https://sdom36.ru/lipetsk/" target="_blank" rel="noopener">sdom36.ru/lipetsk</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">Липецк</span><span class="inv-tag">8,5/10 в конц.</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="c3"></select>
-          <textarea class="inv-note" data-id="c3" placeholder="заметка"></textarea>
-        </div>
-      </div>
-
-      <div class="inv-lead" data-id="c4">
-        <div>
-          <div class="inv-lead-name">ДОМ ТЕХНОНИКОЛЬ</div>
-          <div class="inv-lead-why">Федеральный бренд, заводские панельно-каркасные домокомплекты, ищет региональных сертифицированных партнёров для собственной линейки посёлков.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:88003330235">8 (800) 333-02-35</a>
-            <a href="mailto:dom.tn@tn.ru">dom.tn@tn.ru</a>
-            <a href="https://dom.tn.ru/" target="_blank" rel="noopener">dom.tn.ru</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">федеральный</span><span class="inv-tag">8/10 в конц.</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="c4"></select>
-          <textarea class="inv-note" data-id="c4" placeholder="заметка"></textarea>
-        </div>
-      </div>
-
-      <div class="inv-lead similar" data-id="c-s1">
-        <div>
-          <div class="inv-lead-name">Лесничий (Воронеж)</div>
-          <div class="inv-lead-why">Похожая активная организация: каркасно-брусовое домостроение, на рынке 14+ лет, тот же регион, что и Dominimum/«Полесье».</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+74732045236">+7 (473) 204-52-36</a>
-            <a href="mailto:info@lesnichii.ru">info@lesnichii.ru</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">Воронеж</span><span class="inv-tag">похожая организация</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="c-s1"></select>
-          <textarea class="inv-note" data-id="c-s1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="c-s2">
-        <div>
-          <div class="inv-lead-name">Каркасник</div>
-          <div class="inv-lead-why">Похожая активная организация: мультирегиональный каркасный застройщик, работает в т.ч. в Воронежской области.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:88002225388">8 (800) 222-53-88</a>
-            <a href="mailto:info@karkasnik.ru">info@karkasnik.ru</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">мультирегион</span><span class="inv-tag">похожая организация</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="c-s2"></select>
-          <textarea class="inv-note" data-id="c-s2" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="c-s3">
-        <div>
-          <div class="inv-lead-name">Rupan</div>
-          <div class="inv-lead-why">Похожая активная организация: федеральный производитель СИП-домокомплектов, 1000+ построенных домов — альтернатива ДОМ ТЕХНОНИКОЛЬ.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+74955189040">+7 (495) 518-90-40</a>
-            <a href="mailto:info@rupan.ru">info@rupan.ru</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">федеральный</span><span class="inv-tag">похожая организация</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="c-s3"></select>
-          <textarea class="inv-note" data-id="c-s3" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="c-s4">
-        <div>
-          <div class="inv-lead-name">Вологодское зодчество</div>
-          <div class="inv-lead-why">Похожая активная организация: полный цикл — клеёный брус/сруб/каркас, с 1998 года, офисы в Вологде, Москве и СПб.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+78122411934">+7 (812) 241-19-34</a>
-            <span class="missing">email не найден</span>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">федеральный</span><span class="inv-tag">похожая организация</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="c-s4"></select>
-          <textarea class="inv-note" data-id="c-s4" placeholder="заметка"></textarea>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="inv-tier">
-    <div class="kicker">Тир D &middot; Беларусь</div>
-    <h2>Деревянное домостроение с опытом работы в РФ</h2>
-    <p class="tdesc">Белорусские строительные компании уже ведут жильё в Калужской, Курской, Брянской областях и Санкт-Петербурге — Курская область граничит с Липецкой. Профиль (деревянные дома под ключ) прямо совпадает с концепцией «Возрождения».</p>
-    <div class="inv-leads">
-      <div class="inv-lead" data-id="d1">
-        <div>
-          <div class="inv-lead-name">Woodplace</div>
-          <div class="inv-lead-why">Дома и бани из клеёного бруса премиум-класса, строит по всей РФ — уже есть логистика и опыт трансграничных проектов.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+375298888579">+375 (29) 88-88-579</a>
-            <a href="mailto:info@woodplace.by">info@woodplace.by</a>
-            <a href="https://woodplace.by/" target="_blank" rel="noopener">woodplace.by</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">Минск</span><span class="inv-tag">строит по РФ</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="d1"></select>
-          <textarea class="inv-note" data-id="d1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-
-      <div class="inv-lead" data-id="d2">
-        <div>
-          <div class="inv-lead-name">Ecohome</div>
-          <div class="inv-lead-why">Производство и строительство деревянных домов в Беларуси и Европе — потенциальный плацдарм для выхода на российский региональный рынок.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+375293232019">+375 (29) 323-20-19</a>
-            <a href="mailto:ecohomecompany@gmail.com">ecohomecompany@gmail.com</a>
-            <span class="missing">сайт ecohome.by не открылся при проверке — уточнить актуальность перед контактом</span>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">Беларусь</span><span class="inv-tag">требует проверки</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="d2"></select>
-          <textarea class="inv-note" data-id="d2" placeholder="заметка"></textarea>
-        </div>
-      </div>
-
-      <div class="inv-lead" data-id="d3">
-        <div>
-          <div class="inv-lead-name">Archiline Houses</div>
-          <div class="inv-lead-why">Экспорт домокомплектов, в том числе в ЕС — компания с опытом экспортных поставок.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+375296200567">+375 (29) 620-05-67</a>
-            <a href="https://archiline.by/" target="_blank" rel="noopener">archiline.by</a>
-            <span class="missing">email не публикуется — форма на сайте</span>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">экспорт</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="d3"></select>
-          <textarea class="inv-note" data-id="d3" placeholder="заметка"></textarea>
-        </div>
-      </div>
-
-      <div class="inv-lead" data-id="d4">
-        <div>
-          <div class="inv-lead-name">budexport.by</div>
-          <div class="inv-lead-why">Официальный портал экспорта строительных услуг Беларуси — канал для адресной рассылки тизера широкому кругу белорусских строительных организаций, а не отдельная компания.</div>
-          <div class="inv-lead-contacts"><a href="https://budexport.by/" target="_blank" rel="noopener">budexport.by</a></div>
-          <div class="inv-lead-meta"><span class="inv-tag">канал рассылки</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="d4"></select>
-          <textarea class="inv-note" data-id="d4" placeholder="заметка"></textarea>
-        </div>
-      </div>
-
-      <div class="inv-lead" data-id="d5">
-        <div>
-          <div class="inv-lead-name">Посольство Беларуси в РФ, торгово-экономический отдел</div>
-          <div class="inv-lead-why">Уже официально продвигает белорусский стройэкспорт в Калужскую, Курскую, Брянскую области и СПб — может дать прямые контакты профильных компаний.</div>
-          <div class="inv-lead-contacts"><a href="https://russia.mfa.gov.by/ru/embassy/" target="_blank" rel="noopener">russia.mfa.gov.by</a></div>
-          <div class="inv-lead-meta"><span class="inv-tag">госканал</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="d5"></select>
-          <textarea class="inv-note" data-id="d5" placeholder="заметка"></textarea>
-        </div>
-      </div>
-
-      <div class="inv-lead similar" data-id="d-s1">
-        <div>
-          <div class="inv-lead-name">WHBel (Wooden House Bel)</div>
-          <div class="inv-lead-why">Похожая активная организация: 25+ лет на рынке, клеёный брус, экспорт в 28+ стран.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+375297777986">+375 (29) 7777-986</a>
-            <a href="mailto:wh-minsk@mail.ru">wh-minsk@mail.ru</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">Минск</span><span class="inv-tag">похожая организация</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="d-s1"></select>
-          <textarea class="inv-note" data-id="d-s1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="d-s2">
-        <div>
-          <div class="inv-lead-name">Белсруб</div>
-          <div class="inv-lead-why">Похожая активная организация: одна из крупных белорусских компаний полного цикла деревянного домостроения.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+375296445665">+375 (29) 644-56-65</a>
-            <a href="mailto:info@belsrub.by">info@belsrub.by</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">Минск</span><span class="inv-tag">похожая организация</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="d-s2"></select>
-          <textarea class="inv-note" data-id="d-s2" placeholder="заметка"></textarea>
-        </div>
-      </div>
-      <div class="inv-lead similar" data-id="d-s3">
-        <div>
-          <div class="inv-lead-name">ЭСБРУС (S-Brus)</div>
-          <div class="inv-lead-why">Похожая активная организация: минский производитель деревянных/клеёных домов.</div>
-          <div class="inv-lead-contacts">
-            <a href="tel:+375291198899">+375 (29) 119-88-99</a>
-            <span class="missing">email не найден</span>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">Минск</span><span class="inv-tag">похожая организация</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="d-s3"></select>
-          <textarea class="inv-note" data-id="d-s3" placeholder="заметка"></textarea>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="inv-tier">
-    <div class="kicker">Тир E &middot; Расширение охвата</div>
-    <h2>Маркетплейсы инвестиционных проектов</h2>
-    <p class="tdesc">Публикация тизера там, где инвесторы уже целенаправленно просматривают загородные проекты — пассивный канал в дополнение к прямой рассылке.</p>
-    <div class="inv-leads">
-      <div class="inv-lead" data-id="e1">
-        <div>
-          <div class="inv-lead-name">investprojects.info — раздел «Коттеджные посёлки»</div>
-          <div class="inv-lead-why">Маркетплейс инвестиционных проектов с отдельным отраслевым разделом — аудитория уже ищет именно такие активы.</div>
-          <div class="inv-lead-contacts">
-            <a href="https://investprojects.info/en/sectors/cottage-villages" target="_blank" rel="noopener">investprojects.info</a>
-          </div>
-          <div class="inv-lead-meta"><span class="inv-tag">листинг</span></div>
-        </div>
-        <div class="inv-lead-controls">
-          <select class="inv-status" data-id="e1"></select>
-          <textarea class="inv-note" data-id="e1" placeholder="заметка"></textarea>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <p class="inv-foot">Список отражает публично доступную информацию на сентябрь 2026 года и не является подтверждением интереса или платёжеспособности перечисленных сторон — это стартовая точка для адресной рассылки тизера и последующих переговоров. Ссылка на эту страницу не индексируется поисковиками (noindex), но не защищена паролем — не считайте её приватной.</p>
-
+    <p class="inv-backup-status" id="invBackupStatus" hidden></p>
+  </div>
 </div>
 
+<script>
+// Значение по умолчанию, если investors-data.js ещё не загружен ниже
+var INVESTORS = window.INVESTORS || [];
+</script>
+<script src="assets/js/investors-data.js"></script>
 <script src="assets/js/investors.js"></script>
 </body>
 </html>
