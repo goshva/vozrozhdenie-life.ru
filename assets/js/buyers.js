@@ -5,7 +5,7 @@
   'use strict';
 
   var KEY = 'vozrozhdenie_buyers_mailer_v1';
-  var SITE = 'https://goshva.github.io/vozrozhdenie-life.ru';
+  var SITE = 'https://vozrozhdenie-life.ru';
 
   /* Тот же способ отправки в Telegram, что используется для визитов и формы
      обратной связи на главной странице (assets/js/main.js) — GET-запрос с

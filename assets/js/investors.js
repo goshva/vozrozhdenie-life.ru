@@ -7,7 +7,7 @@
   'use strict';
 
   var KEY = 'vozrozhdenie_investors_mailer_v1';
-  var SITE = 'https://goshva.github.io/vozrozhdenie-life.ru';
+  var SITE = 'https://vozrozhdenie-life.ru';
 
   var TELEGRAM_BOT_TOKEN = '8431645174:AAGTV2Xg4mpOKiqaKHR73pVBBKUDHm0D_yo';
   var TELEGRAM_CHAT_ID = '190404167'; // Erop (@goshva13)

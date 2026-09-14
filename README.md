@@ -12,15 +12,17 @@
 - `assets/img/` — фотографии и логотип
 - `assets/video/` — два видео с площадки
 - `assets/docs/` — ПЗЗ и кадастровая карта (PDF, скачиваемые ссылки)
-- `robots.txt`, `sitemap.xml` — для индексации на `https://goshva.github.io/vozrozhdenie-life.ru/`
+- `robots.txt`, `sitemap.xml` — для индексации на `https://vozrozhdenie-life.ru/`
+- `CNAME` — кастомный домен GitHub Pages (`vozrozhdenie-life.ru`)
 
-Кастомный домен не используется — канонический адрес сайта: `https://goshva.github.io/vozrozhdenie-life.ru/` (файл `CNAME` удалён).
+Канонический адрес сайта: `https://vozrozhdenie-life.ru/` (кастомный домен подключён через GitHub Pages; `goshva.github.io/vozrozhdenie-life.ru` больше не используется).
 
 ## Публикация на GitHub Pages
 
 1. В репозитории: **Settings → Pages → Build and deployment → Source: Deploy from a branch**.
 2. Branch: `main`, папка `/ (root)`.
-3. Сохранить — через 1–2 минуты сайт будет доступен на `https://goshva.github.io/vozrozhdenie-life.ru/`.
+3. Custom domain: `vozrozhdenie-life.ru` (файл `CNAME` в корне репозитория).
+4. Сохранить — через 1–2 минуты сайт будет доступен на `https://vozrozhdenie-life.ru/`.
 
 ## Локальный просмотр
 
