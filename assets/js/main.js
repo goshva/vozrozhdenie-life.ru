@@ -103,9 +103,51 @@
     });
   }
 
+  /* ---------------- Плашка «срочность продажи» ---------------- */
+  function initRibbon() {
+    var ribbon = document.getElementById('urgencyRibbon');
+    var closeBtn = document.getElementById('ribbonClose');
+    if (!ribbon || !closeBtn) return;
+    var KEY = 'vozrozhdenie_ribbon_closed';
+    try {
+      if (sessionStorage.getItem(KEY) === '1') {
+        ribbon.hidden = true;
+        return;
+      }
+    } catch (e) {}
+    closeBtn.addEventListener('click', function () {
+      ribbon.hidden = true;
+      try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
+    });
+  }
+
+  /* ---------------- Проявление блоков при скролле ---------------- */
+  function initReveal() {
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var items = document.querySelectorAll('.reveal');
+    if (reduceMotion || !items.length || !('IntersectionObserver' in window)) return;
+
+    document.body.classList.add('js-anim');
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('inview');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    items.forEach(function (el, i) {
+      el.style.transitionDelay = Math.min(i % 4, 3) * 70 + 'ms';
+      io.observe(el);
+    });
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     initNav();
     initCallbackForm();
+    initRibbon();
+    initReveal();
     trackVisit();
   });
 })();
