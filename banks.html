@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Возрождение — рассылка банкам</title>
+<meta name="description" content="Внутренний трекер рассылки инвестиционного тизера инвестиционным отделам банков по проекту «Возрождение».">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1E3A2B">
+<link rel="icon" href="assets/img/logo.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/banks.css">
+</head>
+<body>
+
+<div class="bk-hero">
+  <div class="wrap">
+    <a class="bk-back" href="index.html">&larr; На главную</a>
+    <h1>Рассылка банкам «Возрождения»</h1>
+    <p>База из <span id="bkTotal">—</span> инвестиционных и корпоративных подразделений банков: проектное финансирование застройщиков, инвестиционно-банковский бизнес (CIB), прямые инвестиции. Отметьте письмо галкой при отправке — на следующий рабочий день карточка подсветится напоминанием позвонить. Всё сохраняется только в этом браузере.</p>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="bk-stats">
+    <div class="bk-stat"><div class="n" id="bkTotal2">—</div><div class="l">всего в базе</div></div>
+    <div class="bk-stat"><div class="n" id="bkSent">0</div><div class="l">писем отправлено</div></div>
+    <div class="bk-stat"><div class="n" id="bkLeft">—</div><div class="l">ещё не писали</div></div>
+    <div class="bk-stat"><div class="n" id="bkDue">0</div><div class="l">пора позвонить</div></div>
+  </div>
+
+  <div class="bk-controls">
+    <button class="bk-togglebar" id="bkToggleBtn" type="button" aria-expanded="false" aria-controls="bkFilterPanel">
+      <span class="bk-togglebar-left">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+        Фильтры
+        <span class="bk-filterbadge" id="bkFilterBadge" hidden>0</span>
+      </span>
+      <span class="bk-togglebar-right">
+        Показано <span id="bkVisibleCount">—</span> из <span id="bkTotal3">—</span>
+        <svg class="bk-chevron" id="bkChevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+      </span>
+    </button>
+    <div class="bk-controls-inner" id="bkFilterPanel" hidden>
+      <input class="bk-search" id="bkSearch" type="search" placeholder="Поиск по банку, региону, профилю…">
+      <select class="bk-filter" id="bkPrioFilter">
+        <option value="">Все приоритеты</option>
+        <option value="A+">A+</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="C">C</option>
+      </select>
+      <select class="bk-filter" id="bkStatusFilter">
+        <option value="">Все статусы</option>
+        <option value="not-sent">Не отправлено</option>
+        <option value="sent">Отправлено</option>
+        <option value="due">Пора позвонить</option>
+      </select>
+      <select class="bk-filter" id="bkEmailFilter">
+        <option value="">Email — неважно</option>
+        <option value="has">Есть email</option>
+        <option value="missing">Нет email</option>
+      </select>
+      <button class="bk-clearfilters" id="bkClearFiltersBtn" type="button" hidden>Сбросить фильтры</button>
+      <button class="bk-resetbtn" id="bkResetBtn" type="button">Сбросить все отметки</button>
+    </div>
+  </div>
+
+  <div class="bk-list" id="bkList"></div>
+  <p class="bk-empty" id="bkEmpty" hidden>Ничего не найдено по этим фильтрам.</p>
+
+  <p class="bk-foot">Контакты собраны из открытых источников (официальные сайты банков) на сентябрь 2026 года и не гарантируют актуальность — прямые контакты конкретных менеджеров инвестиционных подразделений публично не раскрываются большинством банков, поэтому часть карточек ведёт на общую горячую линию или официальную страницу проектного финансирования, откуда обращение маршрутизируется профильному специалисту. Перед рассылкой рекомендуется уточнить актуального контактного менеджера по телефону горячей линии. Ссылка на эту страницу не индексируется поисковиками (noindex), но не защищена паролем.</p>
+
+  <div class="bk-backup">
+    <h2>Резервная копия отметок</h2>
+    <p>Все отметки ("письмо", "переписка", "прозвонили", "встреча") хранятся только в этом браузере и пропадут при очистке данных сайта. Скачайте копию или отправьте её себе на почту, а на другом устройстве — загрузите файл обратно: загрузка объединяется с уже записанными здесь отметками и ничего не удаляет.</p>
+    <div class="bk-backup-actions">
+      <button class="bk-backup-btn" id="bkExportBtn" type="button">&#11015; Скачать копию (JSON)</button>
+      <button class="bk-backup-btn" id="bkEmailBtn" type="button">&#9993; Отправить копию на email</button>
+      <label class="bk-backup-btn bk-backup-upload" for="bkImportInput">
+        &#11014; Загрузить копию
+        <input type="file" id="bkImportInput" accept="application/json,.json" hidden>
+      </label>
+    </div>
+    <p class="bk-backup-status" id="bkBackupStatus" hidden></p>
+  </div>
+</div>
+
+<script>
+// Значение по умолчанию, если banks-data.js ещё не загружен ниже
+var BANKS = window.BANKS || [];
+</script>
+<script src="assets/js/banks-data.js"></script>
+<script src="assets/js/banks.js"></script>
+</body>
+</html>
