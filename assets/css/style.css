@@ -183,7 +183,12 @@ figure{ margin:0; }
 @media (max-width:820px){ .split{ grid-template-columns:1fr; } }
 dl.speclist{ display:grid; grid-template-columns:auto 1fr; gap:10px 20px; margin:0; font-size:14.5px; }
 dl.speclist dt{ color:var(--ink-3); }
-dl.speclist dd{ margin:0; color:var(--ink); font-weight:500; }
+dl.speclist dd{ margin:0; color:var(--ink); font-weight:500; word-break:break-word; }
+@media (max-width:480px){
+  dl.speclist{ grid-template-columns:1fr; gap:2px 0; }
+  dl.speclist dt{ margin-top:10px; }
+  dl.speclist dt:first-child{ margin-top:0; }
+}
 
 /* ---------- Chips ---------- */
 .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
@@ -314,10 +319,13 @@ footer{ padding:48px 0 64px; }
   border:1px solid var(--border);
 }
 .urgencybox h3{ font-family:'Fraunces', serif; font-size:18px; margin-bottom:14px; color:var(--ink); }
-.urgencybox ul{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
-.urgencybox li{ display:flex; gap:10px; font-size:14.5px; color:var(--ink-2); line-height:1.5; }
-.urgencybox li::before{ content:"→"; color:var(--gold); flex:none; font-weight:600; }
 .urgencybox b{ color:var(--ink); font-weight:600; }
+.speccards{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px 24px; }
+.sc-label{ font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.sc-value{ font-size:14.5px; color:var(--ink-2); line-height:1.5; }
+@media (max-width:768px){
+  .speccards{ grid-template-columns:1fr; gap:16px; }
+}
 
 .btn-outline{ background:transparent; color:var(--ink); border:1px solid var(--border-2); }
 .btn-outline:hover{ background:var(--surface-2); color:var(--ink); border-color:var(--gold); }
