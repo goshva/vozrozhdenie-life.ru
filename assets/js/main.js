@@ -106,8 +106,8 @@
   /* ---------------- Плашка «срочность продажи» ---------------- */
   function initRibbon() {
     var ribbon = document.getElementById('urgencyRibbon');
-    var closeBtn = document.getElementById('ribbonClose');
-    if (!ribbon || !closeBtn) return;
+    var cta = document.getElementById('ribbonCta');
+    if (!ribbon || !cta) return;
     var KEY = 'vozrozhdenie_ribbon_closed';
     try {
       if (sessionStorage.getItem(KEY) === '1') {
@@ -115,7 +115,7 @@
         return;
       }
     } catch (e) {}
-    closeBtn.addEventListener('click', function () {
+    cta.addEventListener('click', function () {
       ribbon.hidden = true;
       try { sessionStorage.setItem(KEY, '1'); } catch (e) {}
     });

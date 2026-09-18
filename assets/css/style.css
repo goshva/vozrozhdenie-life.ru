@@ -282,15 +282,8 @@ footer{ padding:48px 0 64px; }
   border-bottom:1px solid rgba(246,217,168,.5);
 }
 .ribbon-cta:hover{ color:#FFEBBB; }
-.ribbon-close{
-  flex:none; width:28px; height:28px; margin-right:14px; border-radius:50%; border:none;
-  background:rgba(255,255,255,.12); color:#F3EFDF; font-size:16px; line-height:1; cursor:pointer;
-}
-.ribbon-close:hover{ background:rgba(255,255,255,.22); }
 @media (max-width:700px){
   .ribbon-inner{ padding:9px 14px; font-size:12.5px; gap:8px; }
-  .ribbon-cta{ display:none; }
-  .ribbon-close{ margin-right:0; width:24px; height:24px; font-size:14px; }
 }
 .ribbon[hidden]{ display:none; }
 
