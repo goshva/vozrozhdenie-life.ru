@@ -109,7 +109,7 @@ p{ color:var(--ink-2); max-width:68ch; }
 .hero-photo{
   position:absolute; inset:0;
   background-image:
-    linear-gradient(180deg, rgba(16,26,20,.55) 0%, rgba(16,26,20,.35) 45%, rgba(16,26,20,.88) 100%),
+    linear-gradient(180deg, rgba(16,26,20,.62) 0%, rgba(16,26,20,.52) 45%, rgba(16,26,20,.88) 100%),
     url('../img/hero.jpg');
   background-size:cover; background-position:center 42%;
 }
@@ -124,9 +124,9 @@ p{ color:var(--ink-2); max-width:68ch; }
   letter-spacing:.09em; text-transform:uppercase; color:#1B2A1F; background:#D8C88F;
   padding:6px 14px; border-radius:100px; margin-bottom:22px;
 }
-.hero h1{ font-size:clamp(36px,6vw,62px); line-height:1.05; color:#FBF8EE; margin-bottom:18px; max-width:16ch; }
+.hero h1{ font-size:clamp(36px,6vw,62px); line-height:1.05; color:#FBF8EE; margin-bottom:18px; max-width:16ch; text-shadow:0 2px 14px rgba(0,0,0,.4); }
 .hero h1 em{ font-style:italic; color:#D8C88F; }
-.hero p.lede{ font-size:18px; max-width:56ch; color:#DDE4D6; margin-bottom:34px; }
+.hero p.lede{ font-size:18px; max-width:56ch; color:#DDE4D6; margin-bottom:34px; text-shadow:0 1px 10px rgba(0,0,0,.35); }
 .herobtns{ display:flex; gap:14px; flex-wrap:wrap; }
 .btn{
   display:inline-flex; align-items:center; gap:8px; font-size:14.5px; font-weight:600;
@@ -297,7 +297,7 @@ footer{ padding:48px 0 64px; }
   display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:30px; padding-top:22px;
   border-top:1px solid rgba(255,255,255,.16);
 }
-.trust{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; color:#C6D2BF; }
+.trust{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; color:#C6D2BF; text-shadow:0 1px 6px rgba(0,0,0,.4); }
 .trust::before{ content:"✓"; color:#8FC3A2; font-weight:700; }
 
 /* ---------- Pricing section ---------- */
