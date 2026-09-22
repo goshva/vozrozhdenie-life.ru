@@ -187,12 +187,15 @@
   function buildMessageBody(b) {
     var greetName = b.contactName ? b.contactName.split(' ')[1] || b.contactName : '';
     var greeting = greetName ? ('Добрый день, ' + greetName + '!') : 'Добрый день!';
-    return [
+    var lines = [
       greeting,
       '',
       'Меня зовут Максим Игоревич, ООО «Экспострой» — собственник проекта «Возрождение» в Липецкой области.',
       '',
-      'Хочу предложить ' + (b.company ? 'инвестиционному подразделению «' + b.company + '»' : 'вашему инвестиционному подразделению') + ' рассмотреть готовый девелоперский актив: 208 кадастровых участков (99 га) на берегу реки Воронеж, с оформленной концепцией коттеджного посёлка и построенной инженерной подготовкой. Продаётся целиком одному покупателю/инвестору — интересен как объект проектного финансирования, прямых инвестиций или M&A.',
+      'Хочу предложить ' + (b.company ? 'инвестиционному подразделению «' + b.company + '»' : 'вашему инвестиционному подразделению') + ' рассмотреть готовый девелоперский актив: 200 кадастровых участков (42,7 га) на берегу реки Воронеж, с оформленной концепцией коттеджного посёлка и построенной инженерной подготовкой. Продаётся целиком одному покупателю/инвестору.'
+    ];
+    if (b.offer) lines.push('', b.offer);
+    lines.push(
       '',
       'Инвестиционный тизер: ' + SITE + '/teaser.html',
       'PDF-версия для пересылки: ' + SITE + '/assets/docs/vozrozhdenie-teaser.pdf',
@@ -202,7 +205,8 @@
       'С уважением,',
       'Максим Игоревич',
       '+7 910 351-13-33'
-    ].join('\n');
+    );
+    return lines.join('\n');
   }
 
   function buildMailto(b) {
@@ -351,6 +355,14 @@
       ? '<span class="bk-refusebadge">&#10006; Прямой отказ' + (st.refusedAt ? ' &middot; ' + fmtDate(st.refusedAt) : '') + '</span>'
       : '';
 
+    var pitchHtml = '';
+    if (b.legend || b.offer) {
+      pitchHtml = '<div class="bk-pitch">' +
+        (b.legend ? '<div class="bk-pitch-row"><span class="bk-pitch-label">Легенда захода</span><p>' + b.legend + '</p></div>' : '') +
+        (b.offer ? '<div class="bk-pitch-row"><span class="bk-pitch-label">Целевое предложение</span><p>' + b.offer + '</p></div>' : '') +
+      '</div>';
+    }
+
     card.innerHTML =
       '<div class="bk-top">' +
         '<div>' +
@@ -363,6 +375,7 @@
       '<label class="bk-check bk-check-refuse"><input type="checkbox" class="js-refused" ' + (st.refused ? 'checked' : '') + '> Прямой отказ</label>' +
       refuseBadge +
       '<div class="bk-card-body"' + (st.refused ? ' hidden' : '') + '>' +
+        pitchHtml +
         '<div class="bk-contacts">' + contactsHtml + '</div>' +
         '<div class="bk-bottom">' +
           '<div class="bk-checks">' +

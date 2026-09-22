@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Возрождение — инвестиционный тизер</title>
-<meta name="description" content="Готовый девелоперский актив у реки Воронеж: 208 кадастровых участков, 99 га, продаётся целиком одному инвестору.">
+<meta name="description" content="Готовый девелоперский актив у реки Воронеж: 200 кадастровых участков, 42,7 га, продаётся целиком одному инвестору.">
 <meta property="og:title" content="Возрождение — инвестиционный тизер">
-<meta property="og:description" content="Готовый девелоперский актив у реки Воронеж: 208 кадастровых участков, 99 га, продаётся целиком одному инвестору.">
+<meta property="og:description" content="Готовый девелоперский актив у реки Воронеж: 200 кадастровых участков, 42,7 га, продаётся целиком одному инвестору.">
 <meta property="og:image" content="https://vozrozhdenie-life.ru/assets/img/hero.jpg">
 <meta property="og:url" content="https://vozrozhdenie-life.ru/teaser.html">
 <meta property="og:type" content="website">
@@ -166,20 +166,41 @@
   td.num, th.num{ text-align:right; font-family:'IBM Plex Mono', monospace; font-variant-numeric:tabular-nums; }
   tr.total td{ font-weight:600; color:var(--ink); background:var(--surface-2); border-top:2px solid var(--border-2); }
 
-  /* ---------- Bar chart ---------- */
-  .chartcard{ border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:24px 24px 10px; box-shadow:var(--shadow); }
+  /* ---------- Chart / compare card ---------- */
+  .chartcard{ border:1px solid var(--border); border-radius:14px; background:var(--surface); padding:24px; box-shadow:var(--shadow); }
   .chart-title{ font-size:13px; color:var(--ink-3); margin-bottom:18px; }
-  .bar-row{ display:grid; grid-template-columns:168px 1fr auto; align-items:center; gap:12px; padding:9px 0; border-radius:8px; }
-  .bar-row:hover{ background:var(--surface-2); }
-  .bar-name{ font-size:13.5px; color:var(--ink-2); }
-  .bar-track{ position:relative; height:14px; background:var(--surface-2); border-radius:4px; }
-  .bar-fill{ position:absolute; inset:0; width:0; background:linear-gradient(90deg, var(--forest-2), var(--gold-deco)); border-radius:4px; transition:width .9s cubic-bezier(.2,.7,.2,1); }
-  .bar-val{ font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--ink); font-variant-numeric:tabular-nums; text-align:right; min-width:58px; }
-  .bar-row[title]{ cursor:default; }
+
+  /* ---------- Price-cut badge ---------- */
+  .pricecut, .pricecut-dark{
+    display:flex; flex-wrap:wrap; align-items:center; gap:10px; margin:18px 0 22px; padding:12px 18px;
+    border-radius:100px;
+  }
+  .pricecut{ background:var(--gold-tint); border:1px solid var(--gold-deco); }
+  .pricecut-dark{ background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.3); }
+  .pricecut-old{ font-family:'IBM Plex Mono', monospace; font-size:14px; color:var(--ink-3); text-decoration:line-through; }
+  .pricecut-dark .pricecut-old{ color:#B9C6B1; }
+  .pricecut svg, .pricecut-dark svg{ flex:none; color:var(--gold-strong); }
+  .pricecut-dark svg{ color:#D8C88F; }
+  .pricecut-new{ font-family:'IBM Plex Mono', monospace; font-size:16px; font-weight:700; color:var(--ink); }
+  .pricecut-dark .pricecut-new{ color:#FBF8EE; }
+  .pricecut-badge{ font-size:11.5px; font-weight:700; padding:3px 9px; border-radius:100px; background:var(--gold-deco); color:#1B2A1F; }
+  .pricecut-note{ font-size:12.5px; color:var(--ink-2); flex-basis:100%; }
+  .pricecut-dark .pricecut-note{ color:#D9E1D3; }
+  @media (min-width:640px){ .pricecut-note{ flex-basis:auto; margin-left:4px; } }
+
+  /* ---------- Before / after compare grid ---------- */
+  .compare-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  .compare-col{ border:1px solid var(--border); border-radius:12px; padding:14px 16px; }
+  .compare-col-new{ border-color:var(--gold-deco); background:var(--gold-tint); }
+  .compare-label{ font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-3); margin-bottom:10px; }
+  .compare-col-new .compare-label{ color:var(--gold-strong); }
+  .compare-row{ display:flex; justify-content:space-between; align-items:baseline; font-size:13.5px; color:var(--ink-2); padding:6px 0; border-top:1px solid var(--border); }
+  .compare-row:first-of-type{ border-top:none; }
+  .compare-row b{ font-family:'IBM Plex Mono', monospace; color:var(--ink); font-size:14.5px; }
 
   /* ---------- Two-col feature grid ---------- */
   .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:28px; }
-  @media (max-width:640px){ .grid2{ grid-template-columns:1fr; } .stats{ grid-template-columns:1fr; } }
+  @media (max-width:640px){ .grid2{ grid-template-columns:1fr; } .stats{ grid-template-columns:1fr; } .compare-grid{ grid-template-columns:1fr; } }
   .feature h3{ font-size:15.5px; margin-bottom:6px; color:var(--ink); }
   .feature p{ font-size:14.5px; }
   dl.speclist{ display:grid; grid-template-columns:auto 1fr; gap:8px 18px; margin:0; font-size:14.5px; }
@@ -312,15 +333,25 @@
     <div class="kicker">Масштаб актива</div>
     <h2 class="h2">По актуальным кадастровым данным</h2>
     <div class="stats">
-      <div class="stat"><div class="num mono">208</div><div class="lbl">кадастровых участков в составе актива</div></div>
-      <div class="stat"><div class="num mono">99,0 га</div><div class="lbl">суммарная площадь по кадастру</div></div>
+      <div class="stat"><div class="num mono">200</div><div class="lbl">кадастровых участков в составе актива</div></div>
+      <div class="stat"><div class="num mono">42,7 га</div><div class="lbl">суммарная площадь по кадастру</div></div>
       <div class="stat"><div class="num mono">197</div><div class="lbl">участков под жилую застройку, 40,8 га</div></div>
     </div>
   </section>
 
   <section>
     <div class="kicker">Состав актива</div>
-    <h2 class="h2">Не только жильё — сформированы рекреационные и социальные зоны</h2>
+    <h2 class="h2">Компактный жилой актив с готовой инфраструктурой</h2>
+    <p>Из периметра сделки исключены рекреационные и природоохранные участки — заказник, пруды, усадьбы и база отдыха — они остаются за продавцом. В предложении только жилая застройка и обслуживающая её инфраструктура: без сложной структуры зон, ниже порог входа, быстрее due diligence и закрытие сделки.</p>
+
+    <div class="pricecut-dark">
+      <span class="pricecut-old">333,8 млн ₽</span>
+      <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      <span class="pricecut-new">213,3 млн ₽</span>
+      <span class="pricecut-badge">&minus;36%</span>
+      <span class="pricecut-note">цена входа ниже почти на треть — за счёт исключения рекреационных зон, не за счёт жилой застройки</span>
+    </div>
+
     <div class="tablewrap">
       <table>
         <thead>
@@ -328,31 +359,40 @@
         </thead>
         <tbody>
           <tr><td>Участки ИЖС (жилая застройка)</td><td class="num">197</td><td class="num">40,75 га</td><td class="num">203 717 500</td></tr>
-          <tr><td>Заказник (природоохранная зона)</td><td class="num">2</td><td class="num">24,99 га</td><td class="num">24 986 500</td></tr>
-          <tr><td>Пруды</td><td class="num">3</td><td class="num">13,98 га</td><td class="num">27 951 000</td></tr>
-          <tr><td>Усадьбы</td><td class="num">2</td><td class="num">7,76 га</td><td class="num">19 387 750</td></tr>
-          <tr><td>База отдыха</td><td class="num">1</td><td class="num">9,64 га</td><td class="num">48 176 000</td></tr>
           <tr><td>Инфраструктура и соцобъекты<br><span style="font-size:12px;color:var(--ink-3)">спортплощадка, деловая зона, водонапорная башня</span></td><td class="num">3</td><td class="num">1,92 га</td><td class="num">9 620 500</td></tr>
-          <tr class="total"><td>Итого</td><td class="num">208</td><td class="num">99,02 га</td><td class="num">333 839 250</td></tr>
+          <tr class="total"><td>Итого</td><td class="num">200</td><td class="num">42,67 га</td><td class="num">213 338 000</td></tr>
         </tbody>
       </table>
     </div>
-    <p style="margin-top:10px;font-size:12.5px;color:var(--ink-3)">Оценка — рыночная (заявленная), рассчитана по каждому из 208 участков по ставке 500 ₽/м² для жилой застройки и базы отдыха, 250 ₽/м² для усадеб, 200 ₽/м² для прудов и 100 ₽/м² для заказника. Официальная кадастровая стоимость этих же участков по данным Росреестра — 67 819 911 ₽; рыночная оценка отражает подготовленность массива и концепцию, а не служит её заменой.</p>
+    <p style="margin-top:10px;font-size:12.5px;color:var(--ink-3)">Оценка — рыночная (заявленная), рассчитана по ставке 500 ₽/м² для жилой застройки и инфраструктуры. Официальная кадастровая стоимость по данным Росреестра — ниже рыночной оценки; точная выписка ЕГРН предоставляется по запросу. Рыночная оценка отражает подготовленность массива и концепцию, а не служит её заменой.</p>
 
     <div style="height:20px"></div>
 
     <div class="grid2" style="align-items:start;">
       <div class="chartcard">
-        <div class="chart-title">Распределение площади по назначению, га</div>
-        <div id="chart"></div>
+        <div class="chart-title">Было → стало: цена входа после исключения рекреационных зон</div>
+        <div class="compare-grid">
+          <div class="compare-col">
+            <div class="compare-label">Было (весь массив)</div>
+            <div class="compare-row"><span>Участков</span><b>208</b></div>
+            <div class="compare-row"><span>Площадь</span><b>99,0 га</b></div>
+            <div class="compare-row"><span>Оценка</span><b>333,8 млн ₽</b></div>
+          </div>
+          <div class="compare-col compare-col-new">
+            <div class="compare-label">Сейчас (жильё + инфраструктура)</div>
+            <div class="compare-row"><span>Участков</span><b>200</b></div>
+            <div class="compare-row"><span>Площадь</span><b>42,7 га</b></div>
+            <div class="compare-row"><span>Оценка</span><b>213,3 млн ₽</b></div>
+          </div>
+        </div>
       </div>
       <figure class="photo">
         <img src="assets/img/zoning-map.jpg" alt="Схема зонирования и нарезки участков массива">
-        <figcaption>Фрагмент утверждённой схемы зонирования — жилая застройка, VIP-зона, усадьбы, инфраструктура</figcaption>
+        <figcaption>Фрагмент утверждённой схемы зонирования — жилая застройка, VIP-зона, инфраструктура</figcaption>
       </figure>
     </div>
 
-    <p style="margin-top:18px;font-size:13.5px;color:var(--ink-3)">В расширенной проектной концепции территория рассчитана на 131,65 га и до 223–227 домовладений с учётом дальнейшего межевания резервных зон — см. полный инвестиционный меморандум.</p>
+    <p style="margin-top:18px;font-size:13.5px;color:var(--ink-3)">В расширенной проектной концепции жилая застройка рассчитана на 48 га и до 223–227 домовладений с учётом дальнейшего межевания резервных зон — см. полный инвестиционный меморандум.</p>
   </section>
 
   <section>
@@ -413,32 +453,25 @@
     </div>
   </section>
 
-  <section>
-    <div class="kicker">Дополнительный потенциал</div>
-    <h2 class="h2">≈10 га под туристско-рекреационные проекты</h2>
-    <div class="chips">
-      <span class="chip gold">Глэмпинг</span>
-      <span class="chip gold">Агрокультурный комплекс</span>
-      <span class="chip gold">Туристско-спортивный кластер</span>
-      <span class="chip gold">Пансионат / геронтологический центр</span>
-      <span class="chip gold">Арендные дома</span>
-      <span class="chip gold">Таунхаусы / доходные дома</span>
-    </div>
-  </section>
-
   <section style="border-bottom:none;">
     <div class="dealband">
       <div class="kicker">Формат сделки</div>
-      <h2>Продажа актива целиком — одному инвестору</h2>
-      <p>100% земельного массива вместе с проектной документацией, архитектурной концепцией, продуктовой линейкой домов, инженерной концепцией и кадастровыми материалами. Возможна структурированная или поэтапная сделка — обсуждается индивидуально.</p>
+      <h2>Продажа жилого массива целиком — одному инвестору</h2>
+      <p>100% жилого массива и обслуживающей его инфраструктуры вместе с проектной документацией, архитектурной концепцией, продуктовой линейкой домов, инженерной концепцией и кадастровыми материалами. Рекреационные и природоохранные зоны в сделку не входят. Возможна структурированная или поэтапная сделка — обсуждается индивидуально.</p>
+      <div class="pricecut-dark">
+        <span class="pricecut-old">333,8 млн ₽</span>
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <span class="pricecut-new">213,3 млн ₽</span>
+        <span class="pricecut-badge">&minus;36%</span>
+      </div>
       <div class="priceline">
-        <span class="price mono">333 839 250 ₽</span>
-        <span class="pricesub">рыночная (заявленная) цена — расчёт по 208 участкам, учтённым в кадастровом квартале 48:05:0880401</span>
+        <span class="price mono">213 338 000 ₽</span>
+        <span class="pricesub">рыночная (заявленная) цена — расчёт по 200 участкам, учтённым в кадастровом квартале 48:05:0880401</span>
       </div>
       <div class="dealgrid">
-        <div class="dealcell"><div class="n">208 уч. / 99,0 га</div><div class="l">состав актива</div></div>
-        <div class="dealcell"><div class="n">≈3,37 млн ₽/га</div><div class="l">средняя цена по массиву</div></div>
-        <div class="dealcell"><div class="n">67,8 млн ₽</div><div class="l">для справки: кадастровая стоимость по Росреестру</div></div>
+        <div class="dealcell"><div class="n">200 уч. / 42,7 га</div><div class="l">состав актива</div></div>
+        <div class="dealcell"><div class="n">&minus;36%</div><div class="l">дешевле полного массива (333,8 млн ₽)</div></div>
+        <div class="dealcell"><div class="n">Построена</div><div class="l">инженерная подготовка: мост, дороги, свет, газ</div></div>
       </div>
     </div>
 
@@ -458,36 +491,5 @@
 
 </div>
 
-<script>
-  (function(){
-    var data = [
-      { label:'Участки ИЖС', ha:40.75, price:203717500 },
-      { label:'Заказник', ha:24.99, price:24986500 },
-      { label:'Пруды', ha:13.98, price:27951000 },
-      { label:'База отдыха', ha:9.64, price:48176000 },
-      { label:'Усадьбы', ha:7.76, price:19387750 },
-      { label:'Инфраструктура', ha:1.92, price:9620500 }
-    ];
-    var max = Math.max.apply(null, data.map(function(d){ return d.ha; }));
-    var el = document.getElementById('chart');
-    data.forEach(function(d){
-      var row = document.createElement('div');
-      row.className = 'bar-row';
-      row.title = d.label + ': ' + d.ha.toFixed(2).replace('.', ',') + ' га · ' + d.price.toLocaleString('ru-RU') + ' ₽';
-      row.innerHTML =
-        '<span class="bar-name">' + d.label + '</span>' +
-        '<span class="bar-track"><span class="bar-fill" data-w="' + (d.ha / max * 100) + '"></span></span>' +
-        '<span class="bar-val">' + d.ha.toFixed(2).replace('.', ',') + ' га</span>';
-      el.appendChild(row);
-    });
-    requestAnimationFrame(function(){
-      requestAnimationFrame(function(){
-        document.querySelectorAll('.bar-fill').forEach(function(b){
-          b.style.width = b.getAttribute('data-w') + '%';
-        });
-      });
-    });
-  })();
-</script>
 </body>
 </html>
