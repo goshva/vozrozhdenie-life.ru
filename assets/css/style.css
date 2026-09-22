@@ -109,7 +109,7 @@ p{ color:var(--ink-2); max-width:68ch; }
 .hero-photo{
   position:absolute; inset:0;
   background-image:
-    linear-gradient(180deg, rgba(16,26,20,.55) 0%, rgba(16,26,20,.35) 45%, rgba(16,26,20,.88) 100%),
+    linear-gradient(180deg, rgba(16,26,20,.62) 0%, rgba(16,26,20,.52) 45%, rgba(16,26,20,.88) 100%),
     url('../img/hero.jpg');
   background-size:cover; background-position:center 42%;
 }
@@ -124,9 +124,9 @@ p{ color:var(--ink-2); max-width:68ch; }
   letter-spacing:.09em; text-transform:uppercase; color:#1B2A1F; background:#D8C88F;
   padding:6px 14px; border-radius:100px; margin-bottom:22px;
 }
-.hero h1{ font-size:clamp(36px,6vw,62px); line-height:1.05; color:#FBF8EE; margin-bottom:18px; max-width:16ch; }
+.hero h1{ font-size:clamp(36px,6vw,62px); line-height:1.05; color:#FBF8EE; margin-bottom:18px; max-width:16ch; text-shadow:0 2px 14px rgba(0,0,0,.4); }
 .hero h1 em{ font-style:italic; color:#D8C88F; }
-.hero p.lede{ font-size:18px; max-width:56ch; color:#DDE4D6; margin-bottom:34px; }
+.hero p.lede{ font-size:18px; max-width:56ch; color:#DDE4D6; margin-bottom:34px; text-shadow:0 1px 10px rgba(0,0,0,.35); }
 .herobtns{ display:flex; gap:14px; flex-wrap:wrap; }
 .btn{
   display:inline-flex; align-items:center; gap:8px; font-size:14.5px; font-weight:600;
@@ -183,7 +183,12 @@ figure{ margin:0; }
 @media (max-width:820px){ .split{ grid-template-columns:1fr; } }
 dl.speclist{ display:grid; grid-template-columns:auto 1fr; gap:10px 20px; margin:0; font-size:14.5px; }
 dl.speclist dt{ color:var(--ink-3); }
-dl.speclist dd{ margin:0; color:var(--ink); font-weight:500; }
+dl.speclist dd{ margin:0; color:var(--ink); font-weight:500; word-break:break-word; }
+@media (max-width:480px){
+  dl.speclist{ grid-template-columns:1fr; gap:2px 0; }
+  dl.speclist dt{ margin-top:10px; }
+  dl.speclist dt:first-child{ margin-top:0; }
+}
 
 /* ---------- Chips ---------- */
 .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
@@ -282,15 +287,8 @@ footer{ padding:48px 0 64px; }
   border-bottom:1px solid rgba(246,217,168,.5);
 }
 .ribbon-cta:hover{ color:#FFEBBB; }
-.ribbon-close{
-  flex:none; width:28px; height:28px; margin-right:14px; border-radius:50%; border:none;
-  background:rgba(255,255,255,.12); color:#F3EFDF; font-size:16px; line-height:1; cursor:pointer;
-}
-.ribbon-close:hover{ background:rgba(255,255,255,.22); }
 @media (max-width:700px){
   .ribbon-inner{ padding:9px 14px; font-size:12.5px; gap:8px; }
-  .ribbon-cta{ display:none; }
-  .ribbon-close{ margin-right:0; width:24px; height:24px; font-size:14px; }
 }
 .ribbon[hidden]{ display:none; }
 
@@ -299,7 +297,7 @@ footer{ padding:48px 0 64px; }
   display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:30px; padding-top:22px;
   border-top:1px solid rgba(255,255,255,.16);
 }
-.trust{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; color:#C6D2BF; }
+.trust{ display:inline-flex; align-items:center; gap:7px; font-size:12.5px; color:#C6D2BF; text-shadow:0 1px 6px rgba(0,0,0,.4); }
 .trust::before{ content:"✓"; color:#8FC3A2; font-weight:700; }
 
 /* ---------- Pricing section ---------- */
@@ -332,10 +330,13 @@ footer{ padding:48px 0 64px; }
   border:1px solid var(--border);
 }
 .urgencybox h3{ font-family:'Fraunces', serif; font-size:18px; margin-bottom:14px; color:var(--ink); }
-.urgencybox ul{ list-style:none; margin:0; padding:0; display:grid; gap:12px; }
-.urgencybox li{ display:flex; gap:10px; font-size:14.5px; color:var(--ink-2); line-height:1.5; }
-.urgencybox li::before{ content:"→"; color:var(--gold); flex:none; font-weight:600; }
 .urgencybox b{ color:var(--ink); font-weight:600; }
+.speccards{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px 24px; }
+.sc-label{ font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); margin-bottom:6px; }
+.sc-value{ font-size:14.5px; color:var(--ink-2); line-height:1.5; }
+@media (max-width:768px){
+  .speccards{ grid-template-columns:1fr; gap:16px; }
+}
 
 .btn-outline{ background:transparent; color:var(--ink); border:1px solid var(--border-2); }
 .btn-outline:hover{ background:var(--surface-2); color:var(--ink); border-color:var(--gold); }

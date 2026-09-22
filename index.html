@@ -45,6 +45,18 @@
   }
 }
 </script>
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=112772019', 'ym');
+
+    ym(112772019, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/112772019" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
 <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -53,9 +65,8 @@
   <div class="ribbon-inner wrap">
     <span class="ribbon-dot" aria-hidden="true"></span>
     <span class="ribbon-text">Проект продаётся <b>целиком</b>: земля, кадастр, инженерия — как новый район шестикратного лауреата всероссийского конкурса «Преображеновка».</span>
-    <a class="ribbon-cta" href="#deal">Формат сделки →</a>
+    <a class="ribbon-cta" id="ribbonCta" href="#deal">Формат сделки →</a>
   </div>
-  <button class="ribbon-close" id="ribbonClose" type="button" aria-label="Скрыть сообщение">&times;</button>
 </div>
 
 <nav class="nav">
@@ -251,12 +262,28 @@
 
     <div class="urgencybox reveal">
       <h3>Новый район самого благоустроенного посёлка России</h3>
-      <ul>
-        <li>В 2,5 км — <b>село Преображеновка</b>, шестикратный победитель всероссийского конкурса на самое благоустроенное сельское поселение России (2011–2020).</li>
-        <li>«Возрождение» задумано как продолжение этой территории — <b>новый район с готовой концепцией</b>, а не изолированный посёлок в поле.</li>
-        <li>Мост, дороги, электричество и газ уже построены — покупатель получает не только землю, но и <b>завершённую инженерную подготовку</b>.</li>
-        <li>Архитектурный код, продуктовая линейка домов (CLT 45–150, индивидуальные проекты) и демонстрационный дом — уже созданы и опробованы на площадке.</li>
-      </ul>
+      <div class="speccards">
+        <div class="speccard">
+          <div class="sc-label">Локация</div>
+          <div class="sc-value">В 2,5 км — <b>село Преображеновка</b></div>
+        </div>
+        <div class="speccard">
+          <div class="sc-label">Статус</div>
+          <div class="sc-value">Шестикратный победитель всероссийского конкурса на самое благоустроенное сельское поселение России (2011–2020)</div>
+        </div>
+        <div class="speccard">
+          <div class="sc-label">Концепция</div>
+          <div class="sc-value">«Возрождение» задумано как продолжение этой территории — <b>новый район с готовой концепцией</b>, а не изолированный посёлок в поле</div>
+        </div>
+        <div class="speccard">
+          <div class="sc-label">Инфраструктура</div>
+          <div class="sc-value">Мост, дороги, электричество и газ уже построены — покупатель получает не только землю, но и <b>завершённую инженерную подготовку</b></div>
+        </div>
+        <div class="speccard">
+          <div class="sc-label">Архитектура</div>
+          <div class="sc-value">Архитектурный код, продуктовая линейка домов (CLT 45–150, индивидуальные проекты) и демонстрационный дом — уже созданы и опробованы на площадке</div>
+        </div>
+      </div>
     </div>
 
     <div class="herobtns" style="margin-top:28px">
