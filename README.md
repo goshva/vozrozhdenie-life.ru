@@ -64,6 +64,7 @@
 - `assets/video/` — видео с площадки
 - `assets/docs/` — PDF для скачивания (тизер, ПЗЗ, кадастровая карта)
 - `build/teaser_pdf.py` — генератор PDF-тизера
+- `docs/sales-strategy-instagram.md` — регламент менеджера: поиск покупателя актива через Instagram
 - `robots.txt`, `sitemap.xml`, `CNAME` — индексация и кастомный домен
 
 ### Пересборка PDF-тизера
