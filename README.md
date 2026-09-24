@@ -5,6 +5,7 @@
 - **Сайт:** https://vozrozhdenie-life.ru/
 - **Инвестиционный тизер (веб):** https://vozrozhdenie-life.ru/teaser.html
 - **Инвестиционный тизер (PDF):** [assets/docs/vozrozhdenie-teaser.pdf](assets/docs/vozrozhdenie-teaser.pdf)
+- **Языковые версии:** [한국어](https://vozrozhdenie-life.ru/ko/) · [中文](https://vozrozhdenie-life.ru/zh/) · [Tiếng Việt](https://vozrozhdenie-life.ru/vi/) — сайт, тизер и PDF ([ko](assets/docs/vozrozhdenie-teaser-ko.pdf), [zh](assets/docs/vozrozhdenie-teaser-zh.pdf), [vi](assets/docs/vozrozhdenie-teaser-vi.pdf))
 
 ## Ключевые параметры предложения
 
@@ -64,7 +65,10 @@
 - `assets/video/` — видео с площадки
 - `assets/docs/` — PDF для скачивания (тизер, ПЗЗ, кадастровая карта)
 - `build/teaser_pdf.py` — генератор PDF-тизера
-- `docs/sales-strategy-instagram.md` — регламент менеджера: поиск покупателя актива через Instagram
+- `assets/docs/sales-strategy-instagram.md` — регламент менеджера: поиск покупателя актива через Instagram
+- `assets/docs/sales-strategy-korea.md`, `assets/docs/sales-strategy-china.md`, `assets/docs/sales-strategy-vietnam.md` — регламенты по корейскому, китайскому и вьетнамскому покупателю: ограничения сделки, каналы (KakaoTalk/Naver, WeChat/Xiaohongshu, Zalo/Facebook), целевые организации, этикет, шаблоны сообщений
+- `ko/`, `zh/`, `vi/` — языковые версии главной и тизера (собираются скриптом, руками не править)
+- `build/i18n_strings.py`, `build/i18n_pages.py` — переводы и сборка языковых версий; `build/teaser_pdf_i18n.py` — PDF-тизер на ko/zh/vi
 - `robots.txt`, `sitemap.xml`, `CNAME` — индексация и кастомный домен
 
 ### Пересборка PDF-тизера
@@ -77,6 +81,17 @@ python build/teaser_pdf.py   # → assets/docs/vozrozhdenie-teaser.pdf
 ```
 
 Цифры (цена, площади, количество участков) заданы в скрипте вручную. Если они меняются, правьте и `build/teaser_pdf.py`, и `teaser.html`, и таблицу в этом README.
+
+### Языковые версии (ko / zh / vi)
+
+Русские `index.html` и `teaser.html` — единственный источник вёрстки. Языковые страницы собираются из них:
+
+```bash
+python build/i18n_pages.py        # → ko/, zh/, vi/ (index.html, teaser.html)
+python build/teaser_pdf_i18n.py   # → assets/docs/vozrozhdenie-teaser-{ko,zh,vi}.pdf (нужны шрифты Malgun Gothic и Microsoft YaHei)
+```
+
+После правки текста на русских страницах добавьте новую фразу и её переводы в `build/i18n_strings.py`. Если на странице останется непереведённая кириллица, скрипт завершится с ошибкой и покажет её. Цифры в PDF на трёх языках лежат в `build/teaser_pdf_i18n.py`.
 
 ### Публикация на GitHub Pages
 

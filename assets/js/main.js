@@ -61,11 +61,30 @@
   }
 
   /* ---------------- Форма обратной связи ---------------- */
+  // Тексты статусов по языку страницы (<html lang>): ru — основной сайт, ko/zh/vi — /ko/, /zh/, /vi/.
+  var FORM_MSG = {
+    ru: { empty: 'Укажите телефон или мессенджер.', sending: 'Отправляем…',
+          ok: 'Спасибо! Мы перезвоним в ближайшее время.',
+          fail: 'Форма пока не настроена — позвоните нам напрямую по телефону ниже.' },
+    ko: { empty: '전화번호 또는 메신저 ID를 입력해 주십시오.', sending: '전송 중입니다…',
+          ok: '감사합니다. 담당자가 빠른 시일 내에 연락드리겠습니다.',
+          fail: '전송에 실패했습니다. 아래 전화번호로 직접 연락해 주십시오.' },
+    zh: { empty: '请填写电话或聊天账号。', sending: '正在提交…',
+          ok: '感谢您的垂询！我们会尽快与您联系。',
+          fail: '提交失败，请通过下方电话直接与我们联系。' },
+    vi: { empty: 'Vui lòng nhập số điện thoại hoặc tài khoản Zalo/Telegram.', sending: 'Đang gửi…',
+          ok: 'Xin cảm ơn Quý khách! Chúng tôi sẽ liên hệ trong thời gian sớm nhất.',
+          fail: 'Gửi không thành công. Vui lòng gọi trực tiếp theo số điện thoại bên dưới.' }
+  };
+
   function initCallbackForm() {
     var form = document.getElementById('callbackForm');
     if (!form) return;
     var statusEl = document.getElementById('cfStatus');
     var submitBtn = document.getElementById('cfSubmit');
+    var submitLabel = submitBtn.textContent;
+    var lang = (document.documentElement.lang || 'ru').slice(0, 2);
+    var msg = FORM_MSG[lang] || FORM_MSG.ru;
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -73,30 +92,30 @@
       var contact = form.elements.contact.value.trim();
 
       if (!contact) {
-        statusEl.textContent = 'Укажите телефон или мессенджер.';
+        statusEl.textContent = msg.empty;
         statusEl.className = 'cf-status err';
         form.elements.contact.focus();
         return;
       }
 
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Отправляем…';
+      submitBtn.textContent = msg.sending;
 
       var text = 'Заявка с сайта — просят перезвонить\n'
         + 'Имя: ' + (name || 'не указано') + '\n'
         + 'Контакт: ' + contact + '\n'
-        + 'Страница: ' + location.pathname + location.hash + '\n'
+        + 'Страница: ' + location.pathname + location.hash + ' (язык: ' + lang + ')\n'
         + 'Время: ' + new Date().toLocaleString('ru-RU', { timeZone: 'Europe/Moscow' }) + ' (МСК)';
 
       sendToTelegram(text).then(function (ok) {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Заказать звонок';
+        submitBtn.textContent = submitLabel;
         if (ok) {
-          statusEl.textContent = 'Спасибо! Мы перезвоним в ближайшее время.';
+          statusEl.textContent = msg.ok;
           statusEl.className = 'cf-status';
           form.reset();
         } else {
-          statusEl.textContent = 'Форма пока не настроена — позвоните нам напрямую по телефону ниже.';
+          statusEl.textContent = msg.fail;
           statusEl.className = 'cf-status err';
         }
       });

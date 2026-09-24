@@ -19,7 +19,7 @@
 // (Воронежская/Тамбовская/Липецкая обл.), Беларусь — как и в buyers-data.js)
 // и масштабу компании, а НЕ формальный score, как в оригинальном списке.
 //
-// rank 55+ — пополнение по регламенту docs/sales-strategy-instagram.md
+// rank 55+ — пополнение по регламенту assets/docs/sales-strategy-instagram.md
 // (сегменты A+…C из раздела 1). rank — ключ отметок в localStorage:
 // новые записи только добавлять в конец, существующие rank не менять.
 var INSTABUYERS = [
@@ -818,7 +818,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "https://www.pslcomp.ru/",
   "profileUrl": "https://www.instagram.com/pslcomp.ru/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 56,
@@ -833,7 +833,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "https://www.fakt-group.ru/",
   "profileUrl": "https://www.instagram.com/gk_fakt/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 57,
@@ -848,7 +848,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/apsdsk/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 58,
@@ -863,7 +863,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/topdom.rf/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 59,
@@ -878,7 +878,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/tus_belgorod/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 60,
@@ -893,7 +893,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "https://u-vody.ru/",
   "profileUrl": "https://www.instagram.com/u_vody/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 61,
@@ -908,7 +908,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/shatosoveren/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 62,
@@ -923,7 +923,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/sk.mv.ru/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 63,
@@ -938,7 +938,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/gorodnik_ltd/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 64,
@@ -953,7 +953,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/frame_haus_fahwerk/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 65,
@@ -968,7 +968,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/fachwerk.by/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 66,
@@ -983,7 +983,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/izhs_development/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 67,
@@ -998,7 +998,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/shodnyacountryclub/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 68,
@@ -1013,7 +1013,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/realtypgs/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 69,
@@ -1028,7 +1028,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/vivatdom31/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 70,
@@ -1043,7 +1043,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/ramonsky_sklon/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 71,
@@ -1058,7 +1058,7 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/technology_house_38/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 },
 {
   "rank": 72,
@@ -1073,6 +1073,6 @@ var INSTABUYERS = [
   "phone": "",
   "website": "",
   "profileUrl": "https://www.instagram.com/novieraskaty/",
-  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
+  "sourceNote": "Найден через веб-поиск (сентябрь 2026) по регламенту assets/docs/sales-strategy-instagram.md; профиль не открывался вручную — проверить по чек-листу 2.2"
 }
 ];
